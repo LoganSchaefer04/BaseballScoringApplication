@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane layoutX="118.0" layoutY="98.0" prefHeight="305.0" prefWidth="234.0">
+         <content>
+            <VBox fx:id="awayTeamBattingOrder" prefHeight="303.0" prefWidth="201.0" />
+         </content>
+      </ScrollPane>
+      <ScrollPane layoutX="697.0" layoutY="98.0" prefHeight="305.0" prefWidth="234.0">
+         <content>
+            <VBox fx:id="homeTeamBattingOrder" prefHeight="304.0" prefWidth="202.0" />
+         </content>
+      </ScrollPane>
+      <Label alignment="BASELINE_CENTER" layoutX="143.0" layoutY="14.0" prefHeight="68.0" prefWidth="315.0" text="Team Select Screen">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="awayTeamDropdown" layoutX="160.0" layoutY="70.0" onAction="#setGameAwayTeam" prefWidth="150.0" promptText="Select Away Team" />
+      <ComboBox fx:id="homeTeamDropdown" layoutX="739.0" layoutY="68.0" onAction="#setGameHomeTeam" prefWidth="150.0" promptText="Select Home Team" />
+      <Button fx:id="startGameButton" layoutX="439.0" layoutY="208.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#startGame" prefHeight="85.0" prefWidth="130.0" text="START&#10;GAME!" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

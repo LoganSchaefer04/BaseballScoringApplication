@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="147.0" layoutY="35.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="249.0" layoutY="137.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="147.0" layoutY="251.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="41.0" layoutY="137.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Button fx:id="NewPitchButton" layoutY="672.0" mnemonicParsing="false" onAction="#showPitchVBox" prefHeight="128.0" prefWidth="195.0" text="Pitch" textAlignment="CENTER">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
+      <VBox fx:id="pitchSelectionVBox" layoutX="195.0" layoutY="672.0" prefHeight="128.0" prefWidth="75.0" visible="false">
+         <children>
+            <Button fx:id="strikeButton" mnemonicParsing="false" onAction="#scoreStrike" prefHeight="25.0" prefWidth="75.0" text="Strike" />
+            <Button fx:id="ballButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Ball" />
+            <Button fx:id="foulButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Foul Ball" />
+            <Button fx:id="inPlayButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Ball in Play" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Button" />
+         </children></VBox>
+      <HBox fx:id="outsHBox" layoutX="775.0" layoutY="23.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Circle fill="WHITE" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <Label layoutX="667.0" layoutY="27.0" prefHeight="58.0" prefWidth="102.0" text="OUTS:">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <HBox fx:id="ballsHBox" layoutX="806.0" layoutY="672.0" prefHeight="48.0" prefWidth="180.0" spacing="5.0">
+         <children>
+            <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="111.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <HBox fx:id="strikesHBox" layoutX="806.0" layoutY="720.0" prefHeight="48.0" prefWidth="180.0" spacing="5.0">
+         <children>
+            <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <Label layoutX="725.0" layoutY="677.0" text="Balls:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="713.0" layoutY="717.0" text="Strikes:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,50 @@
+package com.baseballscoringapplication.managers;
+
+import com.baseballscoringapplication.controllers.MainMenuController;
+import com.baseballscoringapplication.controllers.ScoreGameController;
+import com.baseballscoringapplication.controllers.TeamSetController;
+import com.baseballscoringapplication.managers.GameManager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class SceneManager {
+    private Stage stage;
+    private Map<String, Class<?>> sceneControllerMap;
+
+    public SceneManager(Stage stage) {
+        this.stage = stage;
+        sceneControllerMap = new HashMap<>();
+
+        sceneControllerMap.put("main-menu.fxml", MainMenuController.class);
+        sceneControllerMap.put("team-set.fxml", TeamSetController.class);
+    }
+
+    public void switchScene(String fxmlFile, GameManager gameManager) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+
+            if (fxmlFile.equals("team-set.fxml")) {
+                loader.setController(new TeamSetController(gameManager, this));
+            }
+            if (fxmlFile.equals("score-game.fxml")) {
+                loader.setController(new ScoreGameController(gameManager, this));
+            }
+
+
+
+
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}

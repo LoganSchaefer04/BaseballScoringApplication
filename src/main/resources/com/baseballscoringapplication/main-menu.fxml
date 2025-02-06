@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.baseballscoringapplication.controllers.MainMenuController">
+    <children>
+        <Button layoutX="350.0" layoutY="271.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#showTeamSetScreen" prefHeight="198.0" prefWidth="301.0" text="Create New Game" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Label layoutX="90.0" layoutY="69.0" text="Welcome To My Baseball Scoring Application!" textAlignment="CENTER">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="380.0" layoutY="147.0" text="Created by: Logan Schaefer">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
