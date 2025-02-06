@@ -1,6 +1,5 @@
 package com.baseballscoringapplication.managers;
 
-import com.baseballscoringapplication.controllers.MainMenuController;
 import com.baseballscoringapplication.controllers.ScoreGameController;
 import com.baseballscoringapplication.controllers.TeamSetController;
 import com.baseballscoringapplication.managers.GameManager;
@@ -10,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class SceneManager {
@@ -19,15 +17,13 @@ public class SceneManager {
 
     public SceneManager(Stage stage) {
         this.stage = stage;
-        sceneControllerMap = new HashMap<>();
-
-        sceneControllerMap.put("main-menu.fxml", MainMenuController.class);
-        sceneControllerMap.put("team-set.fxml", TeamSetController.class);
     }
 
     public void switchScene(String fxmlFile, GameManager gameManager) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+
+            String path = "/com/baseballscoringapplication/" + fxmlFile;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
             if (fxmlFile.equals("team-set.fxml")) {
                 loader.setController(new TeamSetController(gameManager, this));
