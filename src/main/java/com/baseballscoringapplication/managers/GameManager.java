@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class GameManager {
     private static GameManager instance;
+    private BasePathManager basePathManager = new BasePathManager();
     private BaseballGame currentGame;
     private Inning currentInning;
     private PlateAppearance currentPlateAppearance;
@@ -57,6 +58,10 @@ public class GameManager {
 
     public int getStrikeCount() {
         return currentPlateAppearance.getStrikeCount();
+    }
+
+    public BasePathManager getBasePathManager() {
+        return basePathManager;
     }
 
     public void scoreGame() {

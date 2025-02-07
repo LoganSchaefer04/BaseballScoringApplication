@@ -1,5 +1,6 @@
 package com.baseballscoringapplication.controllers;
 
+import com.baseballscoringapplication.managers.BasePathManager;
 import com.baseballscoringapplication.managers.GameManager;
 import com.baseballscoringapplication.managers.SceneManager;
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ public class ScoreGameController {
     private HBox ballsHBox;
     @FXML
     private HBox strikesHBox;
+
+    private BasePathManager basePathManager;
     private int outs = 0;
 
     private GameManager gameManager;
@@ -25,6 +28,8 @@ public class ScoreGameController {
     public ScoreGameController(GameManager gameManager, SceneManager sceneManager) {
         this.gameManager = gameManager;
         this.sceneManager = sceneManager;
+        basePathManager = gameManager.getBasePathManager();
+
     }
 
     @FXML
@@ -46,6 +51,12 @@ public class ScoreGameController {
     }
     @FXML
     private void updateStrikesUI(int strikeCount) {
+
+        for (int i = 0; i < 2; i++) {
+            Circle circle = (Circle) strikesHBox.getChildren().get(i);
+            circle.setFill(Color.WHITE);
+
+        }
         for (int i = 0; i < strikeCount; i++) {
             Circle circle = (Circle) strikesHBox.getChildren().get(i);
             circle.setFill(Color.RED);

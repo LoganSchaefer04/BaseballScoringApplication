@@ -41,14 +41,12 @@
             <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="WHITE" layoutX="111.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox fx:id="strikesHBox" layoutX="806.0" layoutY="720.0" prefHeight="48.0" prefWidth="180.0" spacing="5.0">
          <children>
             <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <Label layoutX="725.0" layoutY="677.0" text="Balls:">
