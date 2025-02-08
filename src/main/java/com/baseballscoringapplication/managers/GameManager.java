@@ -1,19 +1,17 @@
 package com.baseballscoringapplication.managers;
 
-import com.baseballscoringapplication.gameComponents.BaseballGame;
-import com.baseballscoringapplication.gameComponents.Inning;
-import com.baseballscoringapplication.gameComponents.PlateAppearance;
-import com.baseballscoringapplication.gameComponents.Team;
+import com.baseballscoringapplication.gameComponents.*;
 
 import java.util.List;
 import java.util.Map;
 
 public class GameManager {
     private static GameManager instance;
-    private BasePathManager basePathManager = new BasePathManager();
+    private BasePathManager basePathManager = new BasePathManager(this);
     private BaseballGame currentGame;
     private Inning currentInning;
     private PlateAppearance currentPlateAppearance;
+    private Play currentPlay;
     public boolean isTopInning;
 
     public static GameManager getInstance() {
@@ -60,6 +58,10 @@ public class GameManager {
         return currentPlateAppearance.getStrikeCount();
     }
 
+    public int getBallCount() {
+        return currentPlateAppearance.getBallCount();
+    }
+
     public BasePathManager getBasePathManager() {
         return basePathManager;
     }
@@ -81,25 +83,36 @@ public class GameManager {
     private void startNewPlateAppearance() {
         currentPlateAppearance = new PlateAppearance(currentInning.getNextBatter());
         currentInning.queueNextBatter();
-        System.out.println("New Batter: " + currentPlateAppearance.getBatter().getPlayerName());
         currentInning.addNewPlateAppearance(currentPlateAppearance);
     }
 
     public int scoreStrike() {
-        currentPlateAppearance.scoreStrike();
-        if (currentPlateAppearance.getStrikeCount() == 3) {
+        Pitch pitch = new Pitch("Strike", getStrikeCount());
+        if (currentPlateAppearance.scoreStrike(pitch) == 3) {
             startNewPlateAppearance();
             return 1;
         }
         return 0;
     }
 
-    private void checkStrikes() {
-        // TODO: Implement
+    public int scoreBall() {
+        Pitch pitch = new Pitch("Ball", getStrikeCount());
+        if (currentPlateAppearance.scoreBall(pitch) == 4) {
+            //basePathManager.scoreWalk(currentPlateAppearance.getBatter());
+            scoreWalk();
+            startNewPlateAppearance();
+            return 1;
+        }
+        return 0;
     }
 
-    private void checkBalls() {
-        // TODO: Implement
+    public void scoreWalk() {
+        currentPlay = new Play("Walk");
+        basePathManager.scoreWalk(currentPlateAppearance.getBatter());
+    }
+
+    public void scoreRun(Player player) {
+        currentPlay.scoreRun(player);
     }
 }
 

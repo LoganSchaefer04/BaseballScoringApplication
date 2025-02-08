@@ -16,8 +16,8 @@ public class PlateAppearance {
     public PlateAppearance(Player batter) {
         this.batter = batter;
         this.pitcher = (new Player());
-        ballCount = 0;
         play = null;
+        pitchesList = new ArrayList<>();
     }
 
     public PlateAppearance (Player batter, Player pitcher) {
@@ -33,17 +33,22 @@ public class PlateAppearance {
         System.out.println("Strikes: " + strikeCount);
     }
 
-    public void scoreStrike() {
-        strikeCount++;
-        System.out.println("Strike scored!");
+    public int scoreStrike(Pitch pitch) {
+        pitchesList.add(pitch);
+        return ++strikeCount;
     }
 
-    public void scoreBall() {
-        ballCount++;
+    public int scoreBall(Pitch pitch) {
+        pitchesList.add(pitch);
+        return ++ballCount;
     }
 
     public int getStrikeCount() {
         return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
     }
 
     public Player getBatter() {
