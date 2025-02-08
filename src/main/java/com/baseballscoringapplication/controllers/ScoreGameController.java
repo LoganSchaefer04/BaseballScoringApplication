@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Button;
 
 public class ScoreGameController {
     @FXML
@@ -25,6 +26,12 @@ public class ScoreGameController {
     private Rectangle secondBase;
     @FXML
     private Rectangle thirdBase;
+    @FXML
+    private Button firstBaseRunner;
+    @FXML
+    private Button secondBaseRunner;
+    @FXML
+    private Button thirdBaseRunner;
 
     private BasePathManager basePathManager;
     private int outs = 0;
@@ -92,22 +99,31 @@ public class ScoreGameController {
         // Check is first base is occupied
         if (basePathManager.getFirstBase() != null) {
             firstBase.setFill(Color.YELLOW);
+            firstBaseRunner.setVisible(true);
+            firstBaseRunner.setText(basePathManager.getFirstBase().getPlayerName());
         } else {
             firstBase.setFill(Color.WHITE);
+            firstBaseRunner.setVisible(false);
         }
 
         // Check if second base is occupied.
         if (basePathManager.getSecondBase() != null) {
             secondBase.setFill(Color.YELLOW);
+            secondBaseRunner.setVisible(true);
+            secondBaseRunner.setText(basePathManager.getSecondBase().getPlayerName());
         } else {
             secondBase.setFill(Color.WHITE);
+            secondBaseRunner.setVisible(false);
         }
 
         // Check if third base is occupied.
         if (basePathManager.getThirdBase() != null) {
             thirdBase.setFill(Color.YELLOW);
+            thirdBaseRunner.setVisible(true);
+            thirdBaseRunner.setText(basePathManager.getThirdBase().getPlayerName());
         } else {
             thirdBase.setFill(Color.WHITE);
+            thirdBaseRunner.setVisible(false);
         }
     }
 }
