@@ -21,7 +21,7 @@ public class BaseballGame {
         setExistingTeams();
     }
 
-    public void addNewInning(Inning inning) {
+    public void addNewHalfInning(Inning inning) {
         listOfInnings.add(inning);
     }
 

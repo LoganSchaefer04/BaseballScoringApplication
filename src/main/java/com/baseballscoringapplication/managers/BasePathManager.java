@@ -47,6 +47,12 @@ public class BasePathManager {
         System.out.println();
     }
 
+    public void clearBases() {
+        for (int i = 0; i < 3; i++) {
+            basePaths[i] = null;
+        }
+    }
+
     public Player getFirstBase() {
         return basePaths[0];
     }

@@ -47,6 +47,10 @@ public class Inning {
         battingTeam.queueNextBatter();
     }
 
+    public void setNumberOfOuts(int outs) {
+        numberOfOuts = outs;
+    }
+
 
 
 

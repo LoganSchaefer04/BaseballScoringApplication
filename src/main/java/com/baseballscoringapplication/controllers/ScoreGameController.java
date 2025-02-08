@@ -34,7 +34,6 @@ public class ScoreGameController {
     private Button thirdBaseRunner;
 
     private BasePathManager basePathManager;
-    private int outs = 0;
 
     private GameManager gameManager;
     private SceneManager sceneManager;
@@ -48,14 +47,16 @@ public class ScoreGameController {
 
     @FXML
     private void scoreStrike() {
-        outs += gameManager.scoreStrike();
+        gameManager.scoreStrike();
         updateStrikesUI(gameManager.getStrikeCount());
+        updateBallsUI();
         updateOutsUI();
+        updateBasePathUI();
     }
     @FXML
     private void scoreBall() {
         gameManager.scoreBall();
-        updateBallsUI(gameManager.getBallCount());
+        updateBallsUI();
         updateBasePathUI();
     }
     @FXML
@@ -64,7 +65,13 @@ public class ScoreGameController {
     }
     @FXML
     private void updateOutsUI() {
-        for (int i = 0; i < outs; i++) {
+        for (int i = 0; i < 2; i++) {
+            Circle circle = (Circle) outsHBox.getChildren().get(i);
+            circle.setFill(Color.WHITE);
+
+        }
+
+        for (int i = 0; i < gameManager.getNumOuts(); i++) {
             Circle circle = (Circle) outsHBox.getChildren().get(i);
             circle.setFill(Color.RED);
         }
@@ -83,13 +90,13 @@ public class ScoreGameController {
         }
     }
 
-    private void updateBallsUI(int ballCount) {
+    private void updateBallsUI() {
 
         for (int i = 0; i < 3; i++) {
             Circle circle = (Circle) ballsHBox.getChildren().get(i);
             circle.setFill(Color.WHITE);
         }
-        for (int i = 0; i < ballCount; i++) {
+        for (int i = 0; i < gameManager.getBallCount(); i++) {
             Circle circle = (Circle) ballsHBox.getChildren().get(i);
             circle.setFill(Color.RED);
         }

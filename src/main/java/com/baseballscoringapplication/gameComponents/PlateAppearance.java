@@ -55,6 +55,14 @@ public class PlateAppearance {
         return batter;
     }
 
+    public void setPlay(Play play) {
+        this.play = play;
+    }
+
+    public Play getPlay() {
+        return play;
+    }
+
 
 
 }
