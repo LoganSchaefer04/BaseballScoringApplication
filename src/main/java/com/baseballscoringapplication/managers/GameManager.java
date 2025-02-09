@@ -144,7 +144,12 @@ public class GameManager {
 
     public void scoreRun(Player player) {
         currentPlay.scoreRun(player);
-        currentGame.setAwayTeamRuns(currentGame.getAwayTeamRuns() + 1);
+        if (isTopInning) {
+            currentGame.setAwayTeamRuns(currentGame.getAwayTeamRuns() + 1);
+        } else {
+            currentGame.setHomeTeamRuns(currentGame.getHomeTeamRuns() + 1);
+        }
+
     }
 
     public void checkNewInning() {
