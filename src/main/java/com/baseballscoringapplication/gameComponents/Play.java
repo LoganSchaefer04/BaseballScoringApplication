@@ -24,6 +24,7 @@ public class Play {
             runnersScored = new ArrayList<>();
         }
         runnersScored.add(player);
+
     }
 
 

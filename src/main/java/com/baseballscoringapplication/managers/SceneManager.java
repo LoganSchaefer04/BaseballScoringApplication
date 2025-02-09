@@ -25,6 +25,7 @@ public class SceneManager {
             String path = "/com/baseballscoringapplication/" + fxmlFile;
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
+
             if (fxmlFile.equals("team-set.fxml")) {
                 loader.setController(new TeamSetController(gameManager, this));
             }

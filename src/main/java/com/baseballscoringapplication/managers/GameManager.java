@@ -66,12 +66,19 @@ public class GameManager {
         return basePathManager;
     }
 
+    public String getHomeTeamRuns() {
+        return Integer.toString(currentGame.getHomeTeamRuns());
+    }
+
+    public String getAwayTeamRuns() {
+        return Integer.toString(currentGame.getAwayTeamRuns());
+    }
+
     public int getNumOuts() {
         return currentHalfInning.getNumOuts();
     }
 
     public void scoreGame() {
-        System.out.println("scoreGame is creating first inning and first plate appearance");
         Inning newHalfInning = new Inning(currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
         currentGame.addNewHalfInning(newHalfInning);
         currentHalfInning = newHalfInning;
@@ -137,6 +144,7 @@ public class GameManager {
 
     public void scoreRun(Player player) {
         currentPlay.scoreRun(player);
+        currentGame.setAwayTeamRuns(currentGame.getAwayTeamRuns() + 1);
     }
 
     public void checkNewInning() {

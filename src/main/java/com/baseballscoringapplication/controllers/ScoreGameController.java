@@ -4,6 +4,8 @@ import com.baseballscoringapplication.managers.BasePathManager;
 import com.baseballscoringapplication.managers.GameManager;
 import com.baseballscoringapplication.managers.SceneManager;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -32,16 +34,32 @@ public class ScoreGameController {
     private Button secondBaseRunner;
     @FXML
     private Button thirdBaseRunner;
+    @FXML
+    private Label awayTeamNameLabel;
+    @FXML
+    private Label homeTeamNameLabel;
+    @FXML
+    private Label awayTeamScoreLabel;
+    @FXML
+    private Label homeTeamScoreLabel;
 
     private BasePathManager basePathManager;
 
     private GameManager gameManager;
     private SceneManager sceneManager;
 
+    public void initialize() {
+        awayTeamNameLabel.setText(gameManager.getAwayTeam().getTeamName());
+        homeTeamNameLabel.setText(gameManager.getHomeTeam().getTeamName());
+        awayTeamScoreLabel.setText(gameManager.getAwayTeamRuns());
+        homeTeamScoreLabel.setText(gameManager.getHomeTeamRuns());
+    }
+
     public ScoreGameController(GameManager gameManager, SceneManager sceneManager) {
         this.gameManager = gameManager;
         this.sceneManager = sceneManager;
         basePathManager = gameManager.getBasePathManager();
+
 
     }
 
@@ -58,6 +76,7 @@ public class ScoreGameController {
         gameManager.scoreBall();
         updateBallsUI();
         updateBasePathUI();
+        updateScoreUI();
     }
     @FXML
     private void showPitchVBox() {
@@ -132,5 +151,10 @@ public class ScoreGameController {
             thirdBase.setFill(Color.WHITE);
             thirdBaseRunner.setVisible(false);
         }
+    }
+
+    private void updateScoreUI() {
+        awayTeamScoreLabel.setText(gameManager.getAwayTeamRuns());
+        homeTeamScoreLabel.setText(gameManager.getHomeTeamRuns());
     }
 }

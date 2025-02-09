@@ -37,13 +37,6 @@ public class BasePathManager {
             }
         }
         basePaths[0] = player;
-        for (Player runner : basePaths) {
-            try {
-                System.out.print(runner.getPlayerName() + ", ");
-            } catch (NullPointerException e) {
-                System.out.print("Empty base, ");
-            }
-        }
         System.out.println();
     }
 
