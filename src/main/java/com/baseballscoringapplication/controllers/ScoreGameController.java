@@ -66,7 +66,7 @@ public class ScoreGameController {
     @FXML
     private void scoreStrike() {
         gameManager.scoreStrike();
-        updateStrikesUI(gameManager.getStrikeCount());
+        updateStrikesUI();
         updateBallsUI();
         updateOutsUI();
         updateBasePathUI();
@@ -96,14 +96,14 @@ public class ScoreGameController {
         }
     }
     @FXML
-    private void updateStrikesUI(int strikeCount) {
+    private void updateStrikesUI() {
 
         for (int i = 0; i < 2; i++) {
             Circle circle = (Circle) strikesHBox.getChildren().get(i);
             circle.setFill(Color.WHITE);
 
         }
-        for (int i = 0; i < strikeCount; i++) {
+        for (int i = 0; i < gameManager.getStrikeCount(); i++) {
             Circle circle = (Circle) strikesHBox.getChildren().get(i);
             circle.setFill(Color.RED);
         }

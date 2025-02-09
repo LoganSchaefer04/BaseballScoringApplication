@@ -79,6 +79,6 @@ public class BattingOrder {
     }
 
     public void queueNextBatter() {
-        nextBatterUpIndex++;
+        nextBatterUpIndex = (nextBatterUpIndex + 1) % 9;
     }
 }
