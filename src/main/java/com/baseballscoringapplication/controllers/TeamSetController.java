@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -58,21 +60,36 @@ public class TeamSetController {
     }
     @FXML
     private void loadHomeTeamBattingOrder() {
+        int i = 0;
         homeTeamBattingOrder.getChildren().clear();
-        System.out.println("Team size: " + gameManager.getHomeTeam().getRoster().size());
         for(Player player : gameManager.getHomeTeam().getRoster()) {
+            if (i == 9) {
+                Line line = new Line(0, 0, 200, 0);
+                line.setStroke(Color.RED);
+                line.setStrokeWidth(2);
+                homeTeamBattingOrder.getChildren().add(line);
+            }
             Button button = new Button(player.getPlayerName());
             button.setOnAction(event -> battingPositionSwap(button, homeTeamBattingOrder));
             homeTeamBattingOrder.getChildren().add(button);
+            i++;
         }
     }
     @FXML
     private void loadAwayTeamBattingOrder() {
+        int i =0;
         awayTeamBattingOrder.getChildren().clear();
         for(Player player : gameManager.getAwayTeam().getRoster()) {
+            if (i == 9) {
+                Line line = new Line(0, 0, 200, 0);
+                line.setStroke(Color.RED);
+                line.setStrokeWidth(2);
+                awayTeamBattingOrder.getChildren().add(line);
+            }
             Button button = new Button(player.getPlayerName());
             button.setOnAction(event -> battingPositionSwap(button, awayTeamBattingOrder));
             awayTeamBattingOrder.getChildren().add(button);
+            i++;
         }
     }
 
