@@ -37,7 +37,6 @@ public class BasePathManager {
             }
         }
         basePaths[0] = player;
-        System.out.println();
     }
 
     public void clearBases() {

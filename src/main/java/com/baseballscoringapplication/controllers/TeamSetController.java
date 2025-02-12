@@ -135,6 +135,8 @@ public class TeamSetController {
 
     @FXML
     private void startGame() {
+        homeTeamBattingOrder.getChildren().remove(9);
+        awayTeamBattingOrder.getChildren().remove(9);
         gameManager.setHomeBattingOrder(getButtonTexts(homeTeamBattingOrder));
         gameManager.setAwayBattingOrder(getButtonTexts(awayTeamBattingOrder));
         sceneManager.switchScene("score-game.fxml", gameManager);

@@ -7,15 +7,15 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle fx:id="secondBase" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="425.0" layoutY="127.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
-      <Rectangle fx:id="firstBase" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="565.0" layoutY="267.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
-      <Rectangle fx:id="thirdBase" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="277.0" layoutY="267.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
-      <Button fx:id="NewPitchButton" layoutY="672.0" mnemonicParsing="false" onAction="#showPitchVBox" prefHeight="128.0" prefWidth="195.0" text="Pitch" textAlignment="CENTER">
+      <Rectangle fx:id="secondBase" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="80.0" layoutX="569.0" layoutY="448.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="firstBase" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="80.0" layoutX="665.0" layoutY="544.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="thirdBase" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="80.0" layoutX="473.0" layoutY="544.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Button fx:id="NewPitchButton" layoutY="730.0" mnemonicParsing="false" onAction="#showPitchVBox" prefHeight="70.0" prefWidth="102.0" text="Pitch" textAlignment="CENTER">
          <font>
-            <Font size="45.0" />
+            <Font size="28.0" />
          </font>
       </Button>
-      <VBox fx:id="pitchSelectionVBox" layoutX="195.0" layoutY="672.0" prefHeight="128.0" prefWidth="75.0" visible="false">
+      <VBox fx:id="pitchSelectionVBox" layoutX="102.0" layoutY="672.0" prefHeight="128.0" prefWidth="75.0" visible="false">
          <children>
             <Button fx:id="strikeButton" mnemonicParsing="false" onAction="#scoreStrike" prefHeight="25.0" prefWidth="75.0" text="Strike" />
             <Button fx:id="ballButton" mnemonicParsing="false" onAction="#scoreBall" prefHeight="25.0" prefWidth="75.0" text="Ball" />
@@ -23,37 +23,37 @@
             <Button fx:id="inPlayButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Ball in Play" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Button" />
          </children></VBox>
-      <HBox fx:id="outsHBox" layoutX="122.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-         <children>
-            <Circle fill="WHITE" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-         </children>
-      </HBox>
-      <Label layoutX="14.0" layoutY="34.0" prefHeight="58.0" prefWidth="102.0" text="OUTS:">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Label>
-      <HBox fx:id="ballsHBox" layoutX="127.0" layoutY="106.0" prefHeight="48.0" prefWidth="180.0" spacing="5.0">
+      <HBox fx:id="outsHBox" layoutX="122.0" layoutY="30.0" prefHeight="40.0" prefWidth="113.0" spacing="5.0">
          <children>
             <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
-      <HBox fx:id="strikesHBox" layoutX="127.0" layoutY="154.0" prefHeight="48.0" prefWidth="180.0" spacing="5.0">
+      <Label layoutX="18.0" layoutY="21.0" prefHeight="58.0" prefWidth="102.0" text="OUTS:">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <HBox fx:id="ballsHBox" layoutX="120.0" layoutY="79.0" prefHeight="17.0" prefWidth="180.0" spacing="5.0">
+         <children>
+            <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="106.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <HBox fx:id="strikesHBox" layoutX="120.0" layoutY="131.0" prefHeight="48.0" prefWidth="180.0" spacing="5.0">
          <children>
             <Circle fill="WHITE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="WHITE" layoutX="42.0" layoutY="42.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
-      <Label layoutX="43.0" layoutY="107.0" text="Balls:">
+      <Label layoutX="40.0" layoutY="82.0" text="Balls:">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="155.0" text="Strikes:">
+      <Label layoutX="28.0" layoutY="130.0" text="Strikes:">
          <font>
             <Font size="26.0" />
          </font>
@@ -82,8 +82,32 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Button fx:id="firstBaseRunner" layoutX="595.0" layoutY="330.0" mnemonicParsing="false" prefWidth="91.0" text="Button" visible="false" />
-      <Button fx:id="secondBaseRunner" layoutX="455.0" layoutY="190.0" mnemonicParsing="false" prefWidth="91.0" text="Button" visible="false" />
-      <Button fx:id="thirdBaseRunner" layoutX="307.0" layoutY="330.0" mnemonicParsing="false" prefWidth="91.0" text="Button" visible="false" />
+      <VBox layoutX="177.0" layoutY="699.0" prefHeight="101.0" prefWidth="82.0">
+         <children>
+            <Button fx:id="groundBallButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Ground Ball" />
+            <Button fx:id="lineDriveButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Line Drive" />
+            <Button fx:id="flyBallButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Fly Ball" />
+            <Button fx:id="homeRunButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Home Run" />
+         </children>
+      </VBox>
+      <Line endX="104.29290771484375" endY="100.0" layoutX="503.0" layoutY="634.0" startX="-238.0" startY="-240.0" />
+      <Line endX="105.0" endY="100.70709228515625" layoutX="503.0" layoutY="634.0" startX="449.0" startY="-240.0" />
+      <Button fx:id="firstBaseRunner" layoutX="655.0" layoutY="572.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Button" visible="false" />
+      <Button fx:id="secondBaseRunner" layoutX="557.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Button" visible="false" />
+      <Button fx:id="thirdBaseRunner" layoutX="463.0" layoutY="572.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Button" visible="false" />
+      <CubicCurve controlX1="88.0" controlX2="266.0" controlY1="-180.0" controlY2="-180.0" endX="525.70703125" endY="97.29290771484375" fill="#f5f5f5" layoutX="427.0" layoutY="296.0" startX="-162.70709228515625" startY="97.29290771484375" stroke="BLACK" />
+      <Pane fx:id="defensiveButtonPane" layoutX="370.0" layoutY="268.0">
+         <children>
+            <Button fx:id="leftFieldButton" layoutY="101.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="centerFieldButton" layoutX="213.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="rightFieldButton" layoutX="419.0" layoutY="101.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="thirdBaseButton" layoutX="52.0" layoutY="233.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="shortStopButton" layoutX="117.0" layoutY="151.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="secondBaseButton" layoutX="296.0" layoutY="151.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="firstBaseButton" layoutX="366.0" layoutY="233.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="pitcherButton" layoutX="213.0" layoutY="304.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="catcherButton" layoutX="213.0" layoutY="493.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
