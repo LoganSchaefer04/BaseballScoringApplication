@@ -6,27 +6,58 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane layoutX="118.0" layoutY="98.0" prefHeight="305.0" prefWidth="234.0">
+      <ScrollPane layoutX="171.0" layoutY="103.0" prefHeight="305.0" prefWidth="234.0">
          <content>
             <VBox fx:id="awayTeamBattingOrder" prefHeight="303.0" prefWidth="201.0" />
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="697.0" layoutY="98.0" prefHeight="305.0" prefWidth="234.0">
+      <ScrollPane layoutX="171.0" layoutY="456.0" prefHeight="305.0" prefWidth="234.0">
          <content>
             <VBox fx:id="homeTeamBattingOrder" prefHeight="304.0" prefWidth="202.0" />
          </content>
       </ScrollPane>
-      <Label alignment="BASELINE_CENTER" layoutX="143.0" layoutY="14.0" prefHeight="68.0" prefWidth="315.0" text="Team Select Screen">
+      <Label alignment="BASELINE_CENTER" layoutX="3.0" prefHeight="68.0" prefWidth="315.0" text="Team Select Screen">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <ComboBox fx:id="awayTeamDropdown" layoutX="160.0" layoutY="70.0" onAction="#setGameAwayTeam" prefWidth="150.0" promptText="Select Away Team" />
-      <ComboBox fx:id="homeTeamDropdown" layoutX="739.0" layoutY="68.0" onAction="#setGameHomeTeam" prefWidth="150.0" promptText="Select Home Team" />
-      <Button fx:id="startGameButton" layoutX="439.0" layoutY="208.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#startGame" prefHeight="85.0" prefWidth="130.0" text="START&#10;GAME!" textAlignment="CENTER">
+      <ComboBox fx:id="awayTeamDropdown" layoutX="14.0" layoutY="103.0" onAction="#setGameAwayTeam" prefWidth="150.0" promptText="Select Away Team" />
+      <ComboBox fx:id="homeTeamDropdown" layoutX="14.0" layoutY="456.0" onAction="#setGameHomeTeam" prefWidth="150.0" promptText="Select Home Team" />
+      <Button fx:id="startGameButton" layoutX="864.0" layoutY="709.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#startGame" prefHeight="85.0" prefWidth="130.0" text="START&#10;GAME!" textAlignment="CENTER">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
+      <Label layoutX="452.0" layoutY="404.0" prefHeight="79.0" prefWidth="176.0" text="Starting Pitcher:" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="452.0" layoutY="477.0" prefHeight="284.0" prefWidth="234.0">
+         <content>
+            <VBox fx:id="homeTeamPitchers" prefHeight="303.0" prefWidth="201.0" />
+         </content>
+      </ScrollPane>
+      <Label fx:id="homeTeamStartingPitcher" layoutX="628.0" layoutY="426.0" prefHeight="35.0" prefWidth="263.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="awayTeamStartingPitcher" layoutX="628.0" layoutY="68.0" prefHeight="35.0" prefWidth="263.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="452.0" layoutY="46.0" prefHeight="79.0" prefWidth="176.0" text="Starting Pitcher:" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="452.0" layoutY="125.0" prefHeight="284.0" prefWidth="234.0">
+         <content>
+            <VBox fx:id="awayTeamPitchers" prefHeight="303.0" prefWidth="201.0" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="304.0" layoutY="8.0" prefHeight="52.0" prefWidth="597.0" text="Currently, there is nothing stopping swapping between different menus of players. This will be fixed in the future." wrapText="true" />
    </children>
 </AnchorPane>

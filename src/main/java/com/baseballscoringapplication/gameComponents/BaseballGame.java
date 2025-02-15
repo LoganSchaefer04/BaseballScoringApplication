@@ -13,6 +13,8 @@ public class BaseballGame {
     private int awayTeamRuns = 0;
     private ArrayList<Inning> listOfInnings;
     private Map<String, Team> listOfExistingTeams;
+    private Player homeStartingPitcher;
+    private Player awayStartingPitcher;
     public BaseballGame() {
         homeTeam = new Team();
         awayTeam = new Team();
@@ -45,6 +47,20 @@ public class BaseballGame {
         return homeTeamRuns;
     }
 
+    public void setHomeStartingPitcher(Player pitcher) {
+        homeStartingPitcher = pitcher;
+    }
+
+    public Player getHomeStarter() {
+        return homeStartingPitcher;
+    }
+
+    public void setAwayStartingPitcher(Player pitcher) {
+        awayStartingPitcher = pitcher;
+    }
+    public Player getAwayStarter() {
+        return awayStartingPitcher;
+    }
     public void setAwayTeamRuns(int runs) {
         awayTeamRuns = runs;
     }

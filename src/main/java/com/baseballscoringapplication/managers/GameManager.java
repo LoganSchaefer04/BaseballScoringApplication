@@ -13,6 +13,7 @@ public class GameManager {
     private PlateAppearance currentPlateAppearance;
     private Play currentPlay;
     public boolean isTopInning;
+    public boolean isFirstInning = true;
 
     public static GameManager getInstance() {
         return instance;
@@ -25,7 +26,13 @@ public class GameManager {
     public void createGame() {
         this.currentGame = new BaseballGame();
         isTopInning = true;
-        System.out.println("createGame called");
+    }
+
+    public void setStartingPitchers(String homeTeamStarter, String awayTeamStarter) {
+        System.out.println("Setting home pitcher");
+        currentGame.setHomeStartingPitcher(currentGame.getHomeTeam().getPlayer(homeTeamStarter));
+        System.out.println("Setting away pitcher");
+        currentGame.setAwayStartingPitcher(currentGame.getAwayTeam().getPlayer(awayTeamStarter));
     }
 
     public Map<String, Team> getAllTeams() {
@@ -77,11 +84,16 @@ public class GameManager {
     public int getNumOuts() {
         return currentHalfInning.getNumOuts();
     }
+    public Player getCurrentPitcher() {
+        return currentHalfInning.getCurrentPitcher();
+    }
 
     public void scoreGame() {
-        Inning newHalfInning = new Inning(currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
+        System.out.println("scoreGame() called");
+        Inning newHalfInning = new Inning(currentGame.getHomeStarter(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
         currentGame.addNewHalfInning(newHalfInning);
         currentHalfInning = newHalfInning;
+        System.out.println("currentHalfInning has been set");
         startNewPlateAppearance();
         //currentInning = new Inning(currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
         //currentPlateAppearance = new PlateAppearance(currentInning.getNextBatter());
@@ -89,14 +101,21 @@ public class GameManager {
 
     private void startNewHalfInning() {
         basePathManager.clearBases();
+
+        if (isFirstInning) {
+            isTopInning = false;
+            Inning newHalfInning = new Inning(currentGame.getAwayStarter(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning);
+            currentGame.addNewHalfInning(newHalfInning);
+            currentHalfInning = newHalfInning;
+        }
         if (isTopInning) {
             isTopInning = false;
-            Inning newHalfInning = new Inning(currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning);
+            Inning newHalfInning = new Inning(currentHalfInning.getCurrentPitcher(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning);
             currentGame.addNewHalfInning(newHalfInning);
             currentHalfInning = newHalfInning;
         } else {
             isTopInning = true;
-            Inning newHalfInning = new Inning(currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
+            Inning newHalfInning = new Inning(currentHalfInning.getCurrentPitcher(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
             currentGame.addNewHalfInning(newHalfInning);
             currentHalfInning = newHalfInning;
         }

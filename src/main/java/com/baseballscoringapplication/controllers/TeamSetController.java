@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -29,6 +30,14 @@ public class TeamSetController {
     private VBox homeTeamBattingOrder;
     @FXML
     private VBox awayTeamBattingOrder;
+    @FXML
+    private VBox homeTeamPitchers;
+    @FXML
+    private VBox awayTeamPitchers;
+    @FXML
+    private Label homeTeamStartingPitcher;
+    @FXML
+    private Label awayTeamStartingPitcher;
     private Button firstSelected = null;
 
     private Stage stage;
@@ -43,12 +52,8 @@ public class TeamSetController {
     @FXML
     public void initialize() {
         loadTeamDropdowns();
-        loadHomeTeamBattingOrder();
-        loadAwayTeamBattingOrder();
-    }
-    @FXML
-    public void showBattingOrderSetScreen() {
-        sceneManager.switchScene("set-batting-order.fxml", gameManager);
+        loadHomeTeam();
+        loadAwayTeam();
     }
 
     @FXML
@@ -59,9 +64,10 @@ public class TeamSetController {
 
     }
     @FXML
-    private void loadHomeTeamBattingOrder() {
+    private void loadHomeTeam() {
         int i = 0;
         homeTeamBattingOrder.getChildren().clear();
+        homeTeamPitchers.getChildren().clear();
         for(Player player : gameManager.getHomeTeam().getRoster()) {
             if (i == 9) {
                 Line line = new Line(0, 0, 200, 0);
@@ -70,15 +76,23 @@ public class TeamSetController {
                 homeTeamBattingOrder.getChildren().add(line);
             }
             Button button = new Button(player.getPlayerName());
-            button.setOnAction(event -> battingPositionSwap(button, homeTeamBattingOrder));
-            homeTeamBattingOrder.getChildren().add(button);
-            i++;
+            if (!player.getPlayerPosition().equals("P")) {
+                button.setOnAction(event -> battingPositionSwap(button, homeTeamBattingOrder));
+                homeTeamBattingOrder.getChildren().add(button);
+                i++;
+            } else {
+                button.setOnAction(event -> startingPitcherSwap(button));
+                homeTeamPitchers.getChildren().add(button);
+                homeTeamStartingPitcher.setText(button.getText());
+            }
         }
     }
+
     @FXML
-    private void loadAwayTeamBattingOrder() {
+    private void loadAwayTeam() {
         int i =0;
         awayTeamBattingOrder.getChildren().clear();
+        awayTeamPitchers.getChildren().clear();
         for(Player player : gameManager.getAwayTeam().getRoster()) {
             if (i == 9) {
                 Line line = new Line(0, 0, 200, 0);
@@ -87,21 +101,35 @@ public class TeamSetController {
                 awayTeamBattingOrder.getChildren().add(line);
             }
             Button button = new Button(player.getPlayerName());
-            button.setOnAction(event -> battingPositionSwap(button, awayTeamBattingOrder));
-            awayTeamBattingOrder.getChildren().add(button);
-            i++;
+            if (!player.getPlayerPosition().equals("P")) {
+                button.setOnAction(event -> battingPositionSwap(button, awayTeamBattingOrder));
+                awayTeamBattingOrder.getChildren().add(button);
+                i++;
+            } else {
+                button.setOnAction(event -> startingPitcherSwap(button));
+                awayTeamPitchers.getChildren().add(button);
+                awayTeamStartingPitcher.setText(button.getText());
+            }
+        }
+    }
+
+    private void startingPitcherSwap(Button clickedButton) {
+        if (homeTeamPitchers.getChildren().contains(clickedButton)) {
+            homeTeamStartingPitcher.setText(clickedButton.getText());
+        } else {
+            awayTeamStartingPitcher.setText(clickedButton.getText());
         }
     }
 
     @FXML
     private void setGameHomeTeam() {
         gameManager.setGameHomeTeam(homeTeamDropdown.getValue());
-        loadHomeTeamBattingOrder();
+        loadHomeTeam();
     }
     @FXML
     private void setGameAwayTeam() {
         gameManager.setGameAwayTeam(awayTeamDropdown.getValue());
-        loadAwayTeamBattingOrder();
+        loadAwayTeam();
     }
 @FXML
     private void battingPositionSwap(Button clickedButton, VBox battingOrder) {
@@ -143,8 +171,9 @@ public class TeamSetController {
         }
         gameManager.setHomeBattingOrder(getButtonTexts(homeTeamBattingOrder));
         gameManager.setAwayBattingOrder(getButtonTexts(awayTeamBattingOrder));
-        sceneManager.switchScene("score-game.fxml", gameManager);
+        gameManager.setStartingPitchers(homeTeamStartingPitcher.getText(), awayTeamStartingPitcher.getText());
         gameManager.scoreGame();
+        sceneManager.switchScene("score-game.fxml", gameManager);
     }
 
     private List<String> getButtonTexts(VBox battingOrder) {

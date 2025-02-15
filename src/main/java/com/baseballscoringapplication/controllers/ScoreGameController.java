@@ -42,6 +42,8 @@ public class ScoreGameController {
     private Label awayTeamScoreLabel;
     @FXML
     private Label homeTeamScoreLabel;
+    @FXML
+    private Button pitcherButton;
 
     private BasePathManager basePathManager;
 
@@ -53,6 +55,8 @@ public class ScoreGameController {
         homeTeamNameLabel.setText(gameManager.getHomeTeam().getTeamName());
         awayTeamScoreLabel.setText(gameManager.getAwayTeamRuns());
         homeTeamScoreLabel.setText(gameManager.getHomeTeamRuns());
+        pitcherButton.setText(gameManager.getCurrentPitcher().getPlayerName());
+
     }
 
     public ScoreGameController(GameManager gameManager, SceneManager sceneManager) {
@@ -70,6 +74,7 @@ public class ScoreGameController {
         updateBallsUI();
         updateOutsUI();
         updateBasePathUI();
+        updateDefenseUI();
     }
     @FXML
     private void scoreBall() {
@@ -156,5 +161,10 @@ public class ScoreGameController {
     private void updateScoreUI() {
         awayTeamScoreLabel.setText(gameManager.getAwayTeamRuns());
         homeTeamScoreLabel.setText(gameManager.getHomeTeamRuns());
+    }
+
+    private void updateDefenseUI() {
+        // Currently incomplete, currently only handles pitcher
+        pitcherButton.setText(gameManager.getCurrentPitcher().getPlayerName());
     }
 }

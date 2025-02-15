@@ -48,6 +48,9 @@ public class Team {
     public ArrayList<Player> getRoster() {
         return teamRoster.getRoster();
     }
+    public Player getPlayer(String playerName) {
+        return teamRoster.getPlayer(playerName);
+    }
 
     public Player getNextBatter() {
         return battingOrder.getNextPlayer();

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Line endX="-400.0" endY="-300.0" layoutX="598.0" layoutY="724.0" startX="-100.0" />
+      <Line endX="200.0" endY="-300.0" layoutX="600.0" layoutY="725.0" startX="-100.0" />
+      <CubicCurve controlX1="-57.0" controlX2="342.0" controlY1="-297.0" controlY2="-297.0" endX="452.7071533203125" endY="1.29290771484375" fill="#f4f4f5" layoutX="348.0" layoutY="423.0" startX="-150.0" stroke="BLACK" />
+      <Button layoutX="262.0" layoutY="388.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="461.0" layoutY="267.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="650.0" layoutY="401.0" mnemonicParsing="false" text="Button" />
+      <CubicCurve controlX1="-63.0" controlX2="59.0" controlY1="-133.0" controlY2="-133.0" endX="150.0" fill="#f3f6f8" layoutX="499.0" layoutY="572.0" startX="-150.0" stroke="BLACK" />
+      <Button layoutX="322.0" layoutY="510.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="387.0" layoutY="459.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="624.0" layoutY="510.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="557.0" layoutY="459.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="474.0" layoutY="739.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>

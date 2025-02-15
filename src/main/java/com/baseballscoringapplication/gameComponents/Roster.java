@@ -92,6 +92,10 @@ public class Roster {
         public Player getPlayer(int i) {
             return roster.get(i);
         }
+        public Player getPlayer(String playerName) {
+            System.out.println("Returning " + rosterMap.get(playerName).getPlayerName());
+            return rosterMap.get(playerName);
+        }
 
         public ArrayList<Player> getAvailablePitchers() {
             return availablePitchers;

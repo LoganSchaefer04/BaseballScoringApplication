@@ -15,15 +15,15 @@ public class Inning {
     int numberOfOuts;
     Player currentPitcher;
 
-    public Inning(Team batting, Team fielding, boolean isTopInning) {
+    public Inning(Player pitcher, Team batting, Team fielding, boolean isTopInning) {
         //inningNumber = inningNum;
         this.isTopInning = isTopInning;
         battingTeam = batting;
         fieldingTeam = fielding;
         plateAppearanceList = new ArrayList<>();
+        currentPitcher = pitcher;
         System.out.println("New Inning: Batting: " + batting.getTeamName());
         numberOfOuts = 0;
-        //beginInning();
     }
 
 
