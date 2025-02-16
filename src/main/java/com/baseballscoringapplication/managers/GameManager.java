@@ -10,6 +10,8 @@ public class GameManager {
     private BasePathManager basePathManager = new BasePathManager(this);
     private BaseballGame currentGame;
     private Inning currentHalfInning;
+    public int currentInningNumber = 1;
+    public int currentHalfInningNumber = 0;
     private PlateAppearance currentPlateAppearance;
     private Play currentPlay;
     public boolean isTopInning;
@@ -29,9 +31,9 @@ public class GameManager {
     }
 
     public void setStartingPitchers(String homeTeamStarter, String awayTeamStarter) {
-        System.out.println("Setting home pitcher");
+        System.out.println("Home team starter: " + homeTeamStarter);
+        System.out.println("Away team starter: " + awayTeamStarter);
         currentGame.setHomeStartingPitcher(currentGame.getHomeTeam().getPlayer(homeTeamStarter));
-        System.out.println("Setting away pitcher");
         currentGame.setAwayStartingPitcher(currentGame.getAwayTeam().getPlayer(awayTeamStarter));
     }
 
@@ -87,37 +89,47 @@ public class GameManager {
     public Player getCurrentPitcher() {
         return currentHalfInning.getCurrentPitcher();
     }
+    public Player getCurrentBatter() {
+        return currentPlateAppearance.getBatter();
+    }
+    public String getCurrentBatterSpot() {
+        return Integer.toString(currentHalfInning.getCurrentBatterIndex());
+    }
 
     public void scoreGame() {
-        System.out.println("scoreGame() called");
-        Inning newHalfInning = new Inning(currentGame.getHomeStarter(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
+        Inning newHalfInning = new Inning(currentGame.getHomeStarter(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning, currentInningNumber);
         currentGame.addNewHalfInning(newHalfInning);
         currentHalfInning = newHalfInning;
-        System.out.println("currentHalfInning has been set");
         startNewPlateAppearance();
         //currentInning = new Inning(currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
         //currentPlateAppearance = new PlateAppearance(currentInning.getNextBatter());
     }
 
     private void startNewHalfInning() {
+        System.out.println("Starting new half inning");
         basePathManager.clearBases();
 
         if (isFirstInning) {
             isTopInning = false;
-            Inning newHalfInning = new Inning(currentGame.getAwayStarter(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning);
+            isFirstInning = false;
+            Inning newHalfInning = new Inning(currentGame.getAwayStarter(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning, currentInningNumber);
             currentGame.addNewHalfInning(newHalfInning);
             currentHalfInning = newHalfInning;
+            return;
         }
         if (isTopInning) {
             isTopInning = false;
-            Inning newHalfInning = new Inning(currentHalfInning.getCurrentPitcher(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning);
+            Inning newHalfInning = new Inning(currentGame.getInning(currentHalfInningNumber).getCurrentPitcher(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning, currentInningNumber);
             currentGame.addNewHalfInning(newHalfInning);
             currentHalfInning = newHalfInning;
+            currentHalfInningNumber++;
         } else {
             isTopInning = true;
-            Inning newHalfInning = new Inning(currentHalfInning.getCurrentPitcher(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning);
+            Inning newHalfInning = new Inning(currentGame.getInning(currentHalfInningNumber).getCurrentPitcher(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning, currentInningNumber);
             currentGame.addNewHalfInning(newHalfInning);
             currentHalfInning = newHalfInning;
+            currentInningNumber++;
+            currentHalfInningNumber++;
         }
     }
 
@@ -129,6 +141,7 @@ public class GameManager {
 
     public int scoreStrike() {
         Pitch pitch = new Pitch("Strike", getStrikeCount());
+        currentHalfInning.getCurrentPitcher().addPitch(pitch);
         if (currentPlateAppearance.scoreStrike(pitch) == 3) {
             scoreStrikeout();
             return 1;
@@ -138,6 +151,7 @@ public class GameManager {
 
     public int scoreBall() {
         Pitch pitch = new Pitch("Ball", getStrikeCount());
+        currentHalfInning.getCurrentPitcher().addPitch(pitch);
         if (currentPlateAppearance.scoreBall(pitch) == 4) {
             //basePathManager.scoreWalk(currentPlateAppearance.getBatter());
             scoreWalk();
@@ -151,6 +165,7 @@ public class GameManager {
         currentPlay = new Play("Strikeout");
         currentPlateAppearance.setPlay(currentPlay);
         currentHalfInning.setNumberOfOuts(currentHalfInning.getNumOuts() + 1);
+        currentHalfInning.getCurrentPitcher().addOutsRecorded(1);
         checkNewInning();
         startNewPlateAppearance();
     }

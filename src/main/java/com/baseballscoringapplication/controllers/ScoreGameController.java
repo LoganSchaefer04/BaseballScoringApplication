@@ -4,14 +4,17 @@ import com.baseballscoringapplication.managers.BasePathManager;
 import com.baseballscoringapplication.managers.GameManager;
 import com.baseballscoringapplication.managers.SceneManager;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Button;
+import javafx.scene.text.TextAlignment;
 
 public class ScoreGameController {
     @FXML
@@ -44,6 +47,20 @@ public class ScoreGameController {
     private Label homeTeamScoreLabel;
     @FXML
     private Button pitcherButton;
+    @FXML
+    private Label pitcherLabel;
+    @FXML
+    private Label currentPitcherStatsLabel;
+    @FXML
+    private Label batterLabel;
+    @FXML
+    private Label currentBatterStatsLabel;
+    @FXML
+    private Polygon topInningArrow;
+    @FXML
+    private Polygon bottomInningArrow;
+    @FXML
+    private Label currentInningLabel;
 
     private BasePathManager basePathManager;
 
@@ -56,6 +73,13 @@ public class ScoreGameController {
         awayTeamScoreLabel.setText(gameManager.getAwayTeamRuns());
         homeTeamScoreLabel.setText(gameManager.getHomeTeamRuns());
         pitcherButton.setText(gameManager.getCurrentPitcher().getPlayerName());
+        pitcherLabel.setText("P: " + gameManager.getCurrentPitcher().getPlayerName());
+        currentPitcherStatsLabel.setText("P: 0\nIP: 0\nER: 0");
+        batterLabel.setText("1. " + gameManager.getCurrentBatter().getPlayerName());
+        currentBatterStatsLabel.setText("0-0");
+        bottomInningArrow.setVisible(false);
+        currentInningLabel.setTextAlignment(TextAlignment.CENTER);
+        currentInningLabel.setText("1");
 
     }
 
@@ -75,6 +99,8 @@ public class ScoreGameController {
         updateOutsUI();
         updateBasePathUI();
         updateDefenseUI();
+        updatePitcherLabel();
+        updateInningUI();
     }
     @FXML
     private void scoreBall() {
@@ -82,6 +108,7 @@ public class ScoreGameController {
         updateBallsUI();
         updateBasePathUI();
         updateScoreUI();
+        updatePitcherLabel();
     }
     @FXML
     private void showPitchVBox() {
@@ -112,6 +139,7 @@ public class ScoreGameController {
             Circle circle = (Circle) strikesHBox.getChildren().get(i);
             circle.setFill(Color.RED);
         }
+        updateBatterLabel();
     }
 
     private void updateBallsUI() {
@@ -124,6 +152,7 @@ public class ScoreGameController {
             Circle circle = (Circle) ballsHBox.getChildren().get(i);
             circle.setFill(Color.RED);
         }
+        updateBatterLabel();
     }
 
     private void updateBasePathUI() {
@@ -166,5 +195,27 @@ public class ScoreGameController {
     private void updateDefenseUI() {
         // Currently incomplete, currently only handles pitcher
         pitcherButton.setText(gameManager.getCurrentPitcher().getPlayerName());
+    }
+
+    private void updateBatterLabel() {
+        batterLabel.setText(gameManager.getCurrentBatterSpot() + ". " + gameManager.getCurrentBatter().getPlayerName());
+    }
+
+    private void updatePitcherLabel() {
+        pitcherLabel.setText(gameManager.getCurrentPitcher().getPlayerName());
+        currentPitcherStatsLabel.setText("P: " + gameManager.getCurrentPitcher().getPitchCount() +
+                "\n " + gameManager.getCurrentPitcher().getInningsPitched() + "\nER: 0");
+    }
+
+    private void updateInningUI() {
+        if (gameManager.isTopInning) {
+            topInningArrow.setVisible(true);
+            bottomInningArrow.setVisible(false);
+        } else {
+            topInningArrow.setVisible(false);
+            bottomInningArrow.setVisible(true);
+        }
+
+        currentInningLabel.setText(Integer.toString(gameManager.currentInningNumber));
     }
 }

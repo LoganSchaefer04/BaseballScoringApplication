@@ -1,5 +1,6 @@
 package com.baseballscoringapplication.controllers;
 
+import com.baseballscoringapplication.gameComponents.Pitcher;
 import com.baseballscoringapplication.managers.GameManager;
 import com.baseballscoringapplication.managers.SceneManager;
 import com.baseballscoringapplication.gameComponents.Player;
@@ -76,14 +77,14 @@ public class TeamSetController {
                 homeTeamBattingOrder.getChildren().add(line);
             }
             Button button = new Button(player.getPlayerName());
-            if (!player.getPlayerPosition().equals("P")) {
-                button.setOnAction(event -> battingPositionSwap(button, homeTeamBattingOrder));
-                homeTeamBattingOrder.getChildren().add(button);
-                i++;
-            } else {
+            if (player instanceof Pitcher) {
                 button.setOnAction(event -> startingPitcherSwap(button));
                 homeTeamPitchers.getChildren().add(button);
                 homeTeamStartingPitcher.setText(button.getText());
+            } else {
+                button.setOnAction(event -> battingPositionSwap(button, homeTeamBattingOrder));
+                homeTeamBattingOrder.getChildren().add(button);
+                i++;
             }
         }
     }
@@ -101,14 +102,18 @@ public class TeamSetController {
                 awayTeamBattingOrder.getChildren().add(line);
             }
             Button button = new Button(player.getPlayerName());
-            if (!player.getPlayerPosition().equals("P")) {
+            if (player instanceof Pitcher) {
+
+                button.setOnAction(event -> startingPitcherSwap(button));
+                awayTeamPitchers.getChildren().add(button);
+                awayTeamStartingPitcher.setText(button.getText());
                 button.setOnAction(event -> battingPositionSwap(button, awayTeamBattingOrder));
                 awayTeamBattingOrder.getChildren().add(button);
                 i++;
             } else {
-                button.setOnAction(event -> startingPitcherSwap(button));
-                awayTeamPitchers.getChildren().add(button);
-                awayTeamStartingPitcher.setText(button.getText());
+                button.setOnAction(event -> battingPositionSwap(button, awayTeamBattingOrder));
+                awayTeamBattingOrder.getChildren().add(button);
+                i++;
             }
         }
     }
@@ -157,7 +162,6 @@ public class TeamSetController {
 
                 firstSelected.setStyle("");
                 firstSelected = null;
-
         }
     }
 
@@ -179,10 +183,16 @@ public class TeamSetController {
     private List<String> getButtonTexts(VBox battingOrder) {
         List<String> buttonTexts = new ArrayList<>();
 
+        for (int i = 0; i < 9; i++) {
+            Button button = (Button) battingOrder.getChildren().get(i);
+            buttonTexts.add(button.getText());
+        }
+        /*
         for(Object node : battingOrder.getChildren()) {
             Button button = (Button) node;
             buttonTexts.add(button.getText());
         }
+         */
         return buttonTexts;
     }
 }

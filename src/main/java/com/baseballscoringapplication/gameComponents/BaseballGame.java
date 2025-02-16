@@ -103,6 +103,10 @@ public class BaseballGame {
         awayTeam.setBattingOrder(battingOrder);
     }
 
+    public Inning getInning(int index) {
+        return listOfInnings.get(index);
+    }
+
 
 
 

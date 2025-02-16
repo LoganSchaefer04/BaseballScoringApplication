@@ -15,9 +15,10 @@ public class Inning {
     int numberOfOuts;
     Player currentPitcher;
 
-    public Inning(Player pitcher, Team batting, Team fielding, boolean isTopInning) {
+    public Inning(Player pitcher, Team batting, Team fielding, boolean isTopInning, int inningNumber) {
         //inningNumber = inningNum;
         this.isTopInning = isTopInning;
+        this.inningNumber = inningNumber;
         battingTeam = batting;
         fieldingTeam = fielding;
         plateAppearanceList = new ArrayList<>();
@@ -49,6 +50,10 @@ public class Inning {
 
     public void setNumberOfOuts(int outs) {
         numberOfOuts = outs;
+    }
+
+    public int getCurrentBatterIndex() {
+        return battingTeam.getCurrentBatterIndex();
     }
 
 

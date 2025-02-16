@@ -15,6 +15,23 @@ public class Player {
         position = "Undefined";
     }
 
+    public void addPitch(Pitch pitch) {
+
+    }
+
+    public void addOutsRecorded(int outsRecorded) {
+
+    }
+
+    public float getInningsPitched() {
+        return 0;
+    }
+
+    public int getPitchCount() {
+        System.out.println("Called method in Player");
+        return 0;
+    }
+
 
     public void setPosition(String position) {
         this.position = position;

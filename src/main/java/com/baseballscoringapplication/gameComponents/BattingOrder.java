@@ -7,7 +7,7 @@ import java.util.*;
 
 public class BattingOrder {
     private ArrayList<Player> battingOrder;
-    private int nextBatterUpIndex;
+    public int nextBatterUpIndex;
 
     public BattingOrder(Roster teamRoster) {
         battingOrder = new ArrayList<>();

@@ -105,9 +105,29 @@
             <Button fx:id="shortStopButton" layoutX="117.0" layoutY="151.0" mnemonicParsing="false" text="Button" />
             <Button fx:id="secondBaseButton" layoutX="296.0" layoutY="151.0" mnemonicParsing="false" text="Button" />
             <Button fx:id="firstBaseButton" layoutX="366.0" layoutY="233.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="pitcherButton" layoutX="213.0" layoutY="304.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="pitcherButton" layoutX="213.0" layoutY="353.0" mnemonicParsing="false" text="Button" textAlignment="CENTER" />
             <Button fx:id="catcherButton" layoutX="213.0" layoutY="493.0" mnemonicParsing="false" text="Button" />
          </children>
       </Pane>
+      <Label fx:id="pitcherLabel" layoutX="26.0" layoutY="281.0" prefHeight="30.0" prefWidth="180.0" text="Label">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentPitcherStatsLabel" layoutX="26.0" layoutY="311.0" prefHeight="58.0" prefWidth="180.0" text="Label" />
+      <Label fx:id="batterLabel" layoutX="26.0" layoutY="369.0" prefHeight="30.0" prefWidth="180.0" text="Label">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line endX="23.0" layoutX="129.0" layoutY="369.0" startX="-100.0" />
+      <Label fx:id="currentBatterStatsLabel" layoutX="26.0" layoutY="402.0" prefHeight="58.0" prefWidth="180.0" text="Label" />
+      <Label fx:id="currentInningLabel" layoutX="666.0" layoutY="51.0" prefHeight="83.0" prefWidth="40.0" text="100">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Polygon fx:id="topInningArrow" fill="#eeff1f" layoutX="702.0" layoutY="40.0" points="-32.0, 30.0, 1.0, 30.0, -16.0, 0.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="bottomInningArrow" fill="#eeff1f" layoutX="702.0" layoutY="115.0" points="-32.0, 30.0, 1.0, 30.0, -16.0, 0.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>

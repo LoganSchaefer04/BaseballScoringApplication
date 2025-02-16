@@ -28,10 +28,6 @@ public class Roster {
             rosterMap.put("John Doe", newPlayer);
         }
     }
-    public Roster(int rosterSize) {
-        roster = new ArrayList<>(rosterSize);
-        setRoster("TeamsFolder/Detroit Tigers", rosterSize);
-    }
 
     public Roster(File file) {
         roster = new ArrayList<>(DEFAULT_ROSTER_SIZE);
@@ -47,9 +43,15 @@ public class Roster {
                 } else {
                     break;
                 }
-                Player player = new Player(currentPlayerName, currentPlayerPosition);
-                roster.add(player);
-                rosterMap.put(currentPlayerName, player);
+                if (currentPlayerPosition.equals("P")) {
+                    Player player = new Pitcher(currentPlayerName, currentPlayerPosition);
+                    roster.add(player);
+                    rosterMap.put(currentPlayerName, player);
+                } else {
+                    Player player = new Player(currentPlayerName, currentPlayerPosition);
+                    roster.add(player);
+                    rosterMap.put(currentPlayerName, player);
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
@@ -93,7 +95,7 @@ public class Roster {
             return roster.get(i);
         }
         public Player getPlayer(String playerName) {
-            System.out.println("Returning " + rosterMap.get(playerName).getPlayerName());
+            //System.out.println("Returning " + rosterMap.get(playerName).getPlayerName());
             return rosterMap.get(playerName);
         }
 

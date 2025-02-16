@@ -19,6 +19,7 @@ public class BaseballApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        stage.setTitle("Logan's Baseball Scoring Application");
         SceneManager sceneManager = new SceneManager(stage);
         GameManager gameManager = new GameManager();
         gameManager.createGame();

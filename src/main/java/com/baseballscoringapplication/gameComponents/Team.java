@@ -56,6 +56,10 @@ public class Team {
         return battingOrder.getNextPlayer();
     }
 
+    public int getCurrentBatterIndex() {
+        return battingOrder.nextBatterUpIndex;
+    }
+
     public void setBattingOrder(List<String> newBattingOrder) {
         battingOrder.setBattingOrder(newBattingOrder, teamRoster.getRosterMap());
     }
