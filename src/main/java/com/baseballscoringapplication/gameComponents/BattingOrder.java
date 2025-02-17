@@ -14,44 +14,6 @@ public class BattingOrder {
         genericBattingOrder(teamRoster);
         nextBatterUpIndex = 0;
         }
-    /*
-    public void selectBattingOrder(Roster teamRoster) {
-        int choice = 0;
-        Scanner inputChoice = new Scanner(System.in);
-        System.out.println("Would you like to manually input a batting order?");
-        System.out.println("1) Yes");
-        System.out.println("2) No");
-        choice = inputChoice.nextInt();
-
-        switch (choice) {
-            case 0:
-                System.out.println("Invalid");
-                break;
-            case 1:
-                manualBattingOrderInput(teamRoster);
-            case 2:
-                System.out.println(battingOrder.size());
-        }
-    }
-
-     */
-    /*private void manualBattingOrderInput(Roster teamRoster) {
-        System.out.println("Please select your batting order in order");
-        for (int i = 0; i < teamRoster.size(); i++) {
-            System.out.print((i + 1) + ") " + teamRoster.getPlayer(i).getPlayerName());
-            System.out.println(" " + teamRoster.getPlayer(i).getPlayerPosition());
-        }
-        Scanner battingOrderInput = new Scanner(System.in);
-        int selection = 0;
-        for (int i = 0; i < 9; i++) {
-            selection = battingOrderInput.nextInt();
-            addPlayer(teamRoster.getPlayer(selection - 1));
-        }
-
-
-    }
-
-     */
 
     public void setBattingOrder(List<String> newBattingOrder, Map<String, Player> rosterMap) {
         for (int i = 0; i < 9; i++) {

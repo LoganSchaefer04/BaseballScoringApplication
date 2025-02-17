@@ -56,53 +56,6 @@ public class Inning {
         return battingTeam.getCurrentBatterIndex();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    public void beginInning() {
-        int[] basePaths = {0, 0, 0};
-        int outs = 0;
-        while (outs != 3) {
-            Player batter = battingTeam.getBattingOrder().getNextPlayer();
-            Player pitcher = new Player();
-            PlateAppearance plateAppearance = new PlateAppearance(pitcher, batter, outs, basePaths);
-            plateAppearanceList.add(plateAppearance);
-            outs += plateAppearance.getPlay().getNumOuts();
-            runsScored += plateAppearance.getPlay().getRunsScored();
-        }
-    }
-
- */
-
     public int getRunsScored() {
         return runsScored;
     }

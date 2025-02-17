@@ -26,11 +26,6 @@ public class Team {
     }
 
     public Team() {
-        //Scanner teamNameInput = new Scanner(System.in);
-        //System.out.println("Please enter a team: ");
-        //teamName = teamNameInput.next();
-        //System.out.println("Calling to create roster");
-        //teamRoster = new Roster(26);
         teamName = "Generic Team";
         teamRoster = new Roster();
         battingOrder = new BattingOrder(teamRoster);
