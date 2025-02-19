@@ -32,6 +32,7 @@ public class GameManager {
 
     /**
      * Update game state with starting pitchers.
+     *
      * @param homeTeamStarter pitcher that will start for home team.
      * @param awayTeamStarter pitcher that will start for away team.
      */
@@ -181,6 +182,7 @@ public class GameManager {
 
     /**
      * Score a run to battingTeam
+     *
      * @param player used to record the player that scored the run
      */
     public void scoreRun(Player player) {

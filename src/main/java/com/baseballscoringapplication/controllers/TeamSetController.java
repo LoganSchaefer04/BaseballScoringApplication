@@ -47,6 +47,7 @@ public class TeamSetController {
 
     /**
      * Allows access to gameManager and sceneManager methods.
+     *
      * @param gameManager allows controller to update the game state
      * @param sceneManager allows controller to switch scene.
      */
@@ -198,6 +199,7 @@ public class TeamSetController {
 
     /**
      * Swaps buttons in batting order VBox.
+     *
      * @param clickedButton Button that has just been clicked.
      * @param battingOrder VBox where the swap will take place.
      */
@@ -272,6 +274,7 @@ public class TeamSetController {
 
     /**
      * Return a list of players that will be included in the batting order.
+     *
      * @param battingOrder contains batting order in first 9 buttons.
      * @return List of 9 players in starting batting order.
      */

@@ -10,21 +10,30 @@ import java.util.Scanner;
 
 public class Team {
     String teamName;
-    BattingOrder battingOrder;
-    DefensiveLineup defensiveLineup;
-    Roster teamRoster;
+    BattingOrder battingOrder; // Instance of batting order for each team
+    DefensiveLineup defensiveLineup; // Instance of specific defensive lineup during game
+    Roster teamRoster; // Instance of roster for each team
 
+    /**
+     * Constructor for custom team creation
+     *
+     * @param file text file to be read in
+     */
     public Team(File file) {
+        // Set team name and create necessary instances.
         try {
             Scanner teamFileReader = new Scanner(file);
-            teamName = file.getName();
-            teamRoster = new Roster(file);
-            battingOrder = new BattingOrder(teamRoster);
+            teamName = file.getName(); // Set team name to text file name
+            teamRoster = new Roster(file); // Adds all players in text file to roster
+            battingOrder = new BattingOrder(teamRoster); // Generic batting order.
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
     }
 
+    /**
+     * Generic Team, only 9 players, 1 pitcher.
+     */
     public Team() {
         teamName = "Generic Team";
         teamRoster = new Roster();
