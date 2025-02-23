@@ -26,11 +26,6 @@ public class MainMenuController {
     }
     @FXML
     public void showTeamSetScreen() {
-        if (gameManager == null) {
-            System.out.println("gameManager is null");
-        } else {
-            System.out.println("gameManager is NOT null");
-        }
         sceneManager.switchScene("team-set.fxml", gameManager);
 
     }

@@ -142,7 +142,6 @@ public class TeamSetController {
                 button.setOnAction(event -> startingPitcherSwap(button));
                 awayTeamPitchers.getChildren().add(button);
                 awayTeamStartingPitcher.setText(button.getText());
-                i++;
 
             // Otherwise, the player is a position player.
             } else {
