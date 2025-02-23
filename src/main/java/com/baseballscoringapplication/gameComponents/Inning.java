@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inning {
-    private BaseballGame game;
-    int inningNumber;
-    boolean isTopInning;
-    Team battingTeam;
-    Team fieldingTeam;
+    private BaseballGame game; // Future idea for querying baseball games.
+    int inningNumber; // Records inning number.
+    boolean isTopInning; // Records if inning is top or bottom.
+    Team battingTeam; // Batting team for current inning.
+    Team fieldingTeam; // Fielding team for current inning.
     List<PlateAppearance> plateAppearanceList;
-    int runnersLeftOnBase = 0;
-    int runsScored;
-    int numberOfOuts;
-    Player currentPitcher;
+    int runnersLeftOnBase = 0; // Records how many runners were left on base at end of inning.
+    int runsScored; // Records number of runs scored by batting team.
+    int numberOfOuts; // Records number of outs in inning.
+    Player currentPitcher; // Holds instance of current pitcher.
 
     public Inning(Player pitcher, Team batting, Team fielding, boolean isTopInning, int inningNumber) {
         //inningNumber = inningNum;

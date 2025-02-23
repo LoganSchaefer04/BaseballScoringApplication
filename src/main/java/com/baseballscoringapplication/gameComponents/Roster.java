@@ -13,11 +13,17 @@ public class Roster {
     private ArrayList<Player> availablePitchers;
     private Map<String, Player> rosterMap;
 
+    /**
+     * Constructor for base team. All players are generic.
+     */
     public Roster() {
+         // Initialize all data structures for maintaining roster.
         String[] defensivePositions = {"P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF"};
         roster = new ArrayList<>(DEFAULT_ROSTER_SIZE);
         availablePitchers = new ArrayList<>(DEFAULT_ROSTER_SIZE);
         rosterMap = new HashMap<>();
+
+        // Create the unique pitcher allowed for generic teams and add to roster.
         Player player = new Player("John Doe", "P");
         roster.add(player);
         availablePitchers.add(player);
@@ -29,60 +35,56 @@ public class Roster {
         }
     }
 
+    /**
+     * Constructor for already existing team.
+     *
+     * @param file Text file that contains all players and their positions.
+     */
     public Roster(File file) {
+        // Initialize data structures for maintaining roster.
         roster = new ArrayList<>(DEFAULT_ROSTER_SIZE);
         rosterMap = new HashMap<>();
+        // Create scanner object to read text file.
         try {
             Scanner teamInput = new Scanner(file);
             String currentPlayerName;
             String currentPlayerPosition;
+
+            // Iterate over all players in the 26-man roster.
             for (int i = 0; i < 26; i++) {
+                // Check if Scanner object has another player to read.
                 if (teamInput.hasNext()) {
+                    // Record next player name and position.
                     currentPlayerName = teamInput.nextLine();
                     currentPlayerPosition = teamInput.nextLine();
+
+                // No more players to read. Break loop.
                 } else {
                     break;
                 }
+
+                // Check if new player is a pitcher.
                 if (currentPlayerPosition.equals("P")) {
+                    // Create a new instance of pitcher and add to roster.
                     Player player = new Pitcher(currentPlayerName, currentPlayerPosition);
                     roster.add(player);
                     rosterMap.put(currentPlayerName, player);
+
+                // Player is a position player.
                 } else {
+                    // Create player and add to roster.
+                    // I imagine there will be a class in the future for position players.
                     Player player = new Player(currentPlayerName, currentPlayerPosition);
                     roster.add(player);
                     rosterMap.put(currentPlayerName, player);
                 }
             }
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             return;
         }
     }
-
-    public void setRoster(String filename, int rosterSize) {
-
-            File teamFile = new File("C:\\Users\\lrsch\\IdeaProjects\\BaseballSimulation\\src\\TeamsFolder\\Detroit Tigers");
-            System.out.println(teamFile);
-            try {
-                Scanner teamInput = new Scanner(teamFile);
-                String currentPlayerName;
-                String currentPlayerPosition;
-                System.out.println(roster.size());
-                for (int i = 0; i < rosterSize; i++) {
-                    if (teamInput.hasNext()) {
-                        currentPlayerName = teamInput.nextLine();
-                        currentPlayerPosition = teamInput.nextLine();
-                    } else {
-                        break;
-                    }
-                    roster.add(new Player(currentPlayerName, currentPlayerPosition));
-                }
-            } catch (FileNotFoundException e) {
-                System.out.println("File not found");
-                return;
-            }
-
-        }
 
         public ArrayList<Player> getRoster(){
             return roster;

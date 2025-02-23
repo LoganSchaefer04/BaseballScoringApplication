@@ -1,8 +1,16 @@
 package com.baseballscoringapplication.gameComponents;
 
 public class Player {
+
     String playerName;
     String position;
+
+    /**
+     * Create new player. Set name and position.
+     *
+     * @param name Name of new player.
+     * @param playerPosition - Position of new player.
+     */
     public Player(String name, String playerPosition) {
         playerName = name;
         position = playerPosition;
@@ -32,10 +40,6 @@ public class Player {
         return 0;
     }
 
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
     public String getPlayerPosition() {
         return position;
     }
