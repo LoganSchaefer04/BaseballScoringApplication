@@ -39,6 +39,10 @@ public class TeamSetController {
     private Label homeTeamStartingPitcher; // Label listing home team starting pitcher.
     @FXML
     private Label awayTeamStartingPitcher; // Label listing away team starting pitcher.
+    @FXML
+    private Button setAwayDefenseButton;
+    @FXML
+    private Button setHomeDefenseButton;
     private Button firstSelected = null; // Button used for batting order manipulation.
 
     private Stage stage;
@@ -213,8 +217,8 @@ public class TeamSetController {
         // Check if same button is clicked twice.
         } else if (firstSelected == clickedButton) {
             // Dequeue clickedButton from swap and undo highlighting.
-            firstSelected = null;
             firstSelected.setStyle("");
+            firstSelected = null;
 
         // Otherwise, a swap must occur.
         } else {
@@ -277,7 +281,7 @@ public class TeamSetController {
      * @param battingOrder contains batting order in first 9 buttons.
      * @return List of 9 players in starting batting order.
      */
-    private List<String> getButtonTexts(VBox battingOrder) {
+    public List<String> getButtonTexts(VBox battingOrder) {
         // Create list of strings to return.
         List<String> buttonTexts = new ArrayList<>();
 
@@ -288,5 +292,11 @@ public class TeamSetController {
         }
         // Return String list of players.
         return buttonTexts;
+    }
+
+
+    @FXML
+    private void setAwayDefense() {
+        sceneManager.switchToDefensiveSetup(gameManager, this);
     }
 }

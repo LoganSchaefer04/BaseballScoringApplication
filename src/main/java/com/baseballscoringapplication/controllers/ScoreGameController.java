@@ -129,6 +129,13 @@ public class ScoreGameController {
         updateBatterLabel();
     }
 
+    @FXML
+    private void scoreFoulBall() {
+        gameManager.scoreFoulBall();
+        updateStrikesUI();
+        updatePitcherLabel();
+    }
+
     /**
      * When scorekeeper wants to record a pitch, menu will appear to record specific pitch.
      */
@@ -272,7 +279,7 @@ public class ScoreGameController {
 
         // Show current pitcher's game stats.
         currentPitcherStatsLabel.setText("P: " + gameManager.getCurrentPitcher().getPitchCount() +
-                "\n " + gameManager.getCurrentPitcher().getInningsPitched()
+                "\n IP: " + gameManager.getCurrentPitcher().getInningsPitched()
                 +  "\nER: 0");
     }
 

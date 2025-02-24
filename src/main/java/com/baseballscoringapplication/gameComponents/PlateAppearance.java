@@ -52,6 +52,13 @@ public class PlateAppearance {
         return ++strikeCount;
     }
 
+    public int scoreFoulBall(Pitch pitch) {
+        if (pitch.isStrike()) {
+            return ++strikeCount;
+        }
+        return strikeCount;
+    }
+
     /**
      * Score a strike in the plate appearance.
      *

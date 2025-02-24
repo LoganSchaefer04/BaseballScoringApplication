@@ -82,7 +82,7 @@ public class GameManager {
         if (isTopInning) {
             // Create new inning where the home team is batting, away team is on defense
             isTopInning = false;
-            Inning newHalfInning = new Inning(currentGame.getInning(currentHalfInningNumber).getCurrentPitcher(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning, currentInningNumber);
+            Inning newHalfInning = new Inning(currentGame.getInning(currentHalfInningNumber - 1).getCurrentPitcher(), currentGame.getHomeTeam(), currentGame.getAwayTeam(), isTopInning, currentInningNumber);
 
             // Add new inning to list of innings.
             // Set newly created inning to current half inning.
@@ -95,7 +95,7 @@ public class GameManager {
             // Set inning to current inning.
             // Increment half inning and inning count.
             isTopInning = true;
-            Inning newHalfInning = new Inning(currentGame.getInning(currentHalfInningNumber).getCurrentPitcher(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning, currentInningNumber);
+            Inning newHalfInning = new Inning(currentGame.getInning(currentHalfInningNumber - 1).getCurrentPitcher(), currentGame.getAwayTeam(), currentGame.getHomeTeam(), isTopInning, currentInningNumber);
             currentGame.addNewHalfInning(newHalfInning);
             currentHalfInning = newHalfInning;
             currentInningNumber++;
@@ -146,6 +146,12 @@ public class GameManager {
             scoreWalk();
             startNewPlateAppearance();
         }
+    }
+
+    public void scoreFoulBall() {
+        Pitch pitch = new Pitch("Foul Ball", getStrikeCount());
+        currentHalfInning.getCurrentPitcher().addPitch(pitch);
+        currentPlateAppearance.scoreFoulBall(pitch);
     }
 
     /**

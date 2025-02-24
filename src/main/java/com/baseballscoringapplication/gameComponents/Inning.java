@@ -23,7 +23,6 @@ public class Inning {
         fieldingTeam = fielding;
         plateAppearanceList = new ArrayList<>();
         currentPitcher = pitcher;
-        System.out.println("New Inning: Batting: " + batting.getTeamName());
         numberOfOuts = 0;
     }
 

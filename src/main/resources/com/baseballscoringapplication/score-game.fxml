@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -19,7 +27,7 @@
          <children>
             <Button fx:id="strikeButton" mnemonicParsing="false" onAction="#scoreStrike" prefHeight="25.0" prefWidth="75.0" text="Strike" />
             <Button fx:id="ballButton" mnemonicParsing="false" onAction="#scoreBall" prefHeight="25.0" prefWidth="75.0" text="Ball" />
-            <Button fx:id="foulButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Foul Ball" />
+            <Button fx:id="foulButton" mnemonicParsing="false" onAction="#scoreFoulBall" prefHeight="25.0" prefWidth="75.0" text="Foul Ball" />
             <Button fx:id="inPlayButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Ball in Play" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Button" />
          </children></VBox>

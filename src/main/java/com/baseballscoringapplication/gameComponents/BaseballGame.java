@@ -49,7 +49,6 @@ public class BaseballGame {
      */
     public void setAwayTeam(String awayTeam) {
         this.awayTeam = listOfExistingTeams.get(awayTeam);
-        System.out.println("Set the away team to " + listOfExistingTeams.get(awayTeam).getTeamName());
     }
 
     /**
@@ -59,7 +58,6 @@ public class BaseballGame {
      */
     public void setHomeTeam(String homeTeam) {
         this.homeTeam = listOfExistingTeams.get(homeTeam);
-        System.out.println("Set the home team to " + listOfExistingTeams.get(homeTeam).getTeamName());
     }
 
     public void setHomeTeamRuns(int runs) {

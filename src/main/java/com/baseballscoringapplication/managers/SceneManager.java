@@ -1,5 +1,6 @@
 package com.baseballscoringapplication.managers;
 
+import com.baseballscoringapplication.controllers.DefensiveSetupController;
 import com.baseballscoringapplication.controllers.ScoreGameController;
 import com.baseballscoringapplication.controllers.TeamSetController;
 import com.baseballscoringapplication.managers.GameManager;
@@ -57,6 +58,24 @@ public class SceneManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void switchToDefensiveSetup(GameManager gameManager, TeamSetController teamSetController) {
+
+        try {
+            String path = "/com/baseballscoringapplication/defensive-setup.fxml";
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+            loader.setController(new DefensiveSetupController(gameManager, this, teamSetController));
+
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }

@@ -35,11 +35,11 @@ public class Pitcher extends Player {
     /**
      * Adds a specified number of outs to add to pitcher's stats.
      *
-     * @param outsRecorded number of outs to add to pitcher's stats.
+     * @param outsAdded number of outs to add to pitcher's stats.
      */
-    public void addOutsRecorded(int outsRecorded) {
-        this.outsRecorded += outsRecorded;
-        inningsPitched += outsRecorded / 3;
+    public void addOutsRecorded(int outsAdded) {
+        outsRecorded += outsAdded;
+        inningsPitched = (int) outsRecorded / 3;
         inningsPitched += (outsRecorded % 3) / 10;
     }
 

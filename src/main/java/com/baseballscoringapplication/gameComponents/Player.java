@@ -36,7 +36,6 @@ public class Player {
     }
 
     public int getPitchCount() {
-        System.out.println("Called method in Player");
         return 0;
     }
 

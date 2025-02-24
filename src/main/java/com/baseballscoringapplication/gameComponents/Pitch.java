@@ -2,7 +2,7 @@ package com.baseballscoringapplication.gameComponents;
 
 public class Pitch {
 
-    Boolean isStrike;
+    private Boolean isStrike;
 
     public Pitch(String pitch, int strikeCount) {
         processStrike(pitch, strikeCount);
