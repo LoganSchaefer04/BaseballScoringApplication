@@ -7,7 +7,9 @@ import com.baseballscoringapplication.managers.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DefensiveSetupController {
@@ -37,6 +39,8 @@ public class DefensiveSetupController {
     private Button designatedHitter;
     @FXML
     private Button submitChangesButton;
+    @FXML
+    private Pane defensePane;
 
     public DefensiveSetupController(GameManager gameManager, SceneManager sceneManager,
                                     TeamSetController teamSetController, Team team) {
@@ -47,12 +51,8 @@ public class DefensiveSetupController {
     }
 
     public void initialize() {
-        /*
-        In order to make this class work where there is a graphic for setting the defensive lineup,
-        TeamSetController is going to have to update the gameManager every time a switch to the batting order is made.
-        This is because DefensiveSetupController needs to access the batting orders through GameManager every time the
-        scene needs to be opened.
-         */
+        // Get batting order, and display the players on the team.
+        // TODO: change from batting order to defensive setup to save setup between uses of the scene.
         List<Player> playersList = team.getBattingOrder();
         leftField.setText(playersList.get(0).getPlayerName());
         centerField.setText(playersList.get(1).getPlayerName());
@@ -70,6 +70,13 @@ public class DefensiveSetupController {
 
     @FXML
     private void submitChanges() {
+
+        String[] buttonTexts = new String[9];
+        for (int i = 0; i < 9; i++) {
+            Button button = (Button) defensePane.getChildren().get(i);
+            buttonTexts[i] = button.getText();
+        }
+        gameManager.setDefense(team, buttonTexts);
         sceneManager.switchBackToTeamSet(gameManager, teamSetController);
     }
 

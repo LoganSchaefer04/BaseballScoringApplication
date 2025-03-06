@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -61,6 +62,8 @@ public class ScoreGameController {
     private Polygon bottomInningArrow; // Arrow that tracks if is the bottom of an inning.
     @FXML
     private Label currentInningLabel;
+    @FXML
+    private Pane defensiveButtonPane;
     private BasePathManager basePathManager; // Instance of basePathmManager to keep track of basepaths.
 
     private GameManager gameManager; // Used to update game state from inputs

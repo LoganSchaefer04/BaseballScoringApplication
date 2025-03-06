@@ -11,20 +11,24 @@
       <Line endX="-400.0" endY="-300.0" layoutX="598.0" layoutY="727.0" startX="-100.0" />
       <CubicCurve controlX1="-57.0" controlX2="342.0" controlY1="-297.0" controlY2="-297.0" endX="452.7071533203125" endY="1.29290771484375" fill="#f4f4f5" layoutX="348.0" layoutY="423.0" startX="-150.0" stroke="BLACK" />
       <Line endX="200.0" endY="-300.0" layoutX="600.0" layoutY="727.0" startX="-100.0" />
-      <Button fx:id="leftField" layoutX="262.0" layoutY="388.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="centerField" layoutX="461.0" layoutY="267.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="rightField" layoutX="650.0" layoutY="401.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="thirdBase" layoutX="322.0" layoutY="510.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="shortStop" layoutX="387.0" layoutY="459.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="firstBase" layoutX="624.0" layoutY="510.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="secondBase" layoutX="557.0" layoutY="459.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="catcher" layoutX="474.0" layoutY="739.0" mnemonicParsing="false" text="Button" />
       <Button fx:id="SubmitChangesButton" layoutX="904.0" layoutY="752.0" mnemonicParsing="false" onAction="#submitChanges" text="Submit" />
-      <Label layoutX="35.0" layoutY="527.0" text="Designated Hitter" underline="true">
+      <Label text="Designated Hitter" underline="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="designatedHitter" layoutX="80.0" layoutY="565.0" mnemonicParsing="false" text="Button" />
+      <Pane fx:id="defensePane" layoutX="180.0" layoutY="192.0" prefHeight="595.0" prefWidth="664.0">
+         <children>
+            <Button fx:id="leftField" layoutX="108.0" layoutY="191.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="centerField" layoutX="293.0" layoutY="79.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="rightField" layoutX="469.0" layoutY="191.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="thirdBase" layoutX="134.0" layoutY="319.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="shortStop" layoutX="217.0" layoutY="264.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="secondBase" layoutX="366.0" layoutY="264.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="firstBase" layoutX="443.0" layoutY="319.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="catcher" layoutX="293.0" layoutY="556.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="designatedHitter" layoutX="42.0" layoutY="511.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package com.baseballscoringapplication.managers;
 
 import com.baseballscoringapplication.gameComponents.*;
+import javafx.scene.layout.Pane;
 
 import java.util.List;
 import java.util.Map;
@@ -208,6 +209,10 @@ public class GameManager {
         if (currentHalfInning.getNumOuts() == 3) {
             startNewHalfInning();
         }
+    }
+
+    public void setDefense(Team team, String[] playersList) {
+        team.setDefensiveLineup(playersList);
     }
 
     public Map<String, Team> getAllTeams() {

@@ -1,6 +1,7 @@
 package com.baseballscoringapplication.gameComponents;
 
 import com.baseballscoringapplication.DefensiveLineup;
+import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,6 +27,7 @@ public class Team {
             teamName = file.getName(); // Set team name to text file name
             teamRoster = new Roster(file); // Adds all players in text file to roster
             battingOrder = new BattingOrder(teamRoster); // Generic batting order.
+            defensiveLineup = new DefensiveLineup();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
@@ -40,6 +42,9 @@ public class Team {
         battingOrder = new BattingOrder(teamRoster);
     }
 
+    public void setDefensiveLineup(String[] playersList) {
+        defensiveLineup.setLineup(playersList, teamRoster.getRosterMap());
+    }
 
 
     public ArrayList<Player> getBattingOrder() {
