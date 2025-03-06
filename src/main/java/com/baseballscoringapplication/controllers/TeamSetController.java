@@ -73,6 +73,8 @@ public class TeamSetController {
         // Load VBoxes for both teams.
         loadHomeTeam();
         loadAwayTeam();
+        gameManager.setHomeBattingOrder(getButtonTexts(homeTeamBattingOrder));
+        gameManager.setAwayBattingOrder(getButtonTexts(awayTeamBattingOrder));
     }
 
     /**
@@ -185,6 +187,7 @@ public class TeamSetController {
         gameManager.setGameHomeTeam(homeTeamDropdown.getValue());
         // Update home team VBoxes.
         loadHomeTeam();
+        gameManager.setHomeBattingOrder(getButtonTexts(homeTeamBattingOrder));
     }
 
     /**
@@ -196,8 +199,7 @@ public class TeamSetController {
         gameManager.setGameAwayTeam(awayTeamDropdown.getValue());
         // Update the away team VBoxes.
         loadAwayTeam();
-
-
+        gameManager.setAwayBattingOrder(getButtonTexts(awayTeamBattingOrder));
     }
 
     /**
@@ -246,6 +248,10 @@ public class TeamSetController {
                 firstSelected.setStyle("");
                 firstSelected = null;
         }
+        // GameManager needs these updates in order to display correct players when setting defense.
+        gameManager.setHomeBattingOrder(getButtonTexts(homeTeamBattingOrder));
+        gameManager.setAwayBattingOrder(getButtonTexts(awayTeamBattingOrder));
+
     }
 
     /**
@@ -297,6 +303,11 @@ public class TeamSetController {
 
     @FXML
     private void setAwayDefense() {
-        sceneManager.switchToDefensiveSetup(gameManager, this);
+        sceneManager.switchToDefensiveSetup(gameManager, this, gameManager.getAwayTeam());
+    }
+
+    @FXML
+    private void setHomeDefense() {
+        sceneManager.switchToDefensiveSetup(gameManager, this, gameManager.getHomeTeam());
     }
 }

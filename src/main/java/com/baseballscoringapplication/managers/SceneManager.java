@@ -3,6 +3,7 @@ package com.baseballscoringapplication.managers;
 import com.baseballscoringapplication.controllers.DefensiveSetupController;
 import com.baseballscoringapplication.controllers.ScoreGameController;
 import com.baseballscoringapplication.controllers.TeamSetController;
+import com.baseballscoringapplication.gameComponents.Team;
 import com.baseballscoringapplication.managers.GameManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -60,13 +61,13 @@ public class SceneManager {
         }
     }
 
-    public void switchToDefensiveSetup(GameManager gameManager, TeamSetController teamSetController) {
+    public void switchToDefensiveSetup(GameManager gameManager, TeamSetController teamSetController, Team team) {
 
         try {
             String path = "/com/baseballscoringapplication/defensive-setup.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
-            loader.setController(new DefensiveSetupController(gameManager, this, teamSetController));
+            loader.setController(new DefensiveSetupController(gameManager, this, teamSetController, team));
 
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -75,7 +76,22 @@ public class SceneManager {
             e.printStackTrace();
         }
 
+    }
 
+    public void switchBackToTeamSet(GameManager gameManager, TeamSetController teamSetController) {
+
+        try {
+                String path = "/com/baseballscoringapplication/team-set.fxml";
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+                loader.setController(teamSetController);
+
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
