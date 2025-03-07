@@ -60,6 +60,10 @@ public class TeamSetController {
         this.sceneManager = sceneManager;
     }
 
+    public void injectScene(Scene scene) {
+        this.scene = scene;
+    }
+
     /**
      * Initialize is called when FXMLLoader calls load() in SceneManager.
      */
@@ -69,19 +73,13 @@ public class TeamSetController {
         Map<String, Team> existingTeamsList = gameManager.getAllTeams();
         homeTeamDropdown.getItems().addAll(existingTeamsList.keySet());
         awayTeamDropdown.getItems().addAll(existingTeamsList.keySet());
-
-        // Load VBoxes for both teams.
-        loadHomeTeam();
-        loadAwayTeam();
-        gameManager.setHomeBattingOrder(getButtonTexts(homeTeamBattingOrder));
-        gameManager.setAwayBattingOrder(getButtonTexts(awayTeamBattingOrder));
     }
 
     /**
      * Loads home team players into the correct VBox based on position.
      */
     @FXML
-    private void loadHomeTeam() {
+    private void loadHomeTeamVBox() {
         // Index to place red line at index 9.
         int i = 0;
 
@@ -121,7 +119,7 @@ public class TeamSetController {
      *  Loads away team players into the correct VBox based on position.
      */
     @FXML
-    private void loadAwayTeam() {
+    private void loadAwayTeamVBox() {
         // Index to place red line at position 9.
         int i = 0;
 
@@ -186,8 +184,9 @@ public class TeamSetController {
         // Update home team in GameManager.
         gameManager.setGameHomeTeam(homeTeamDropdown.getValue());
         // Update home team VBoxes.
-        loadHomeTeam();
+        loadHomeTeamVBox();
         gameManager.setHomeBattingOrder(getButtonTexts(homeTeamBattingOrder));
+        gameManager.setDefense(gameManager.getHomeTeam(), getButtonTexts(homeTeamBattingOrder));
     }
 
     /**
@@ -198,8 +197,9 @@ public class TeamSetController {
         // Update away team in GameManager.
         gameManager.setGameAwayTeam(awayTeamDropdown.getValue());
         // Update the away team VBoxes.
-        loadAwayTeam();
+        loadAwayTeamVBox();
         gameManager.setAwayBattingOrder(getButtonTexts(awayTeamBattingOrder));
+        gameManager.setDefense(gameManager.getAwayTeam(), getButtonTexts(awayTeamBattingOrder));
     }
 
     /**
@@ -287,14 +287,14 @@ public class TeamSetController {
      * @param battingOrder contains batting order in first 9 buttons.
      * @return List of 9 players in starting batting order.
      */
-    public List<String> getButtonTexts(VBox battingOrder) {
+    public String[] getButtonTexts(VBox battingOrder) {
         // Create list of strings to return.
-        List<String> buttonTexts = new ArrayList<>();
+        String[] buttonTexts = new String[9];
 
         // For the first 9 buttons, add their names to buttonTexts.
         for (int i = 0; i < 9; i++) {
             Button button = (Button) battingOrder.getChildren().get(i);
-            buttonTexts.add(button.getText());
+            buttonTexts[i] = button.getText();
         }
         // Return String list of players.
         return buttonTexts;
@@ -303,11 +303,11 @@ public class TeamSetController {
 
     @FXML
     private void setAwayDefense() {
-        sceneManager.switchToDefensiveSetup(gameManager, this, gameManager.getAwayTeam());
+        sceneManager.switchToDefensiveSetup(gameManager, this, gameManager.getAwayTeam(), scene);
     }
 
     @FXML
     private void setHomeDefense() {
-        sceneManager.switchToDefensiveSetup(gameManager, this, gameManager.getHomeTeam());
+        sceneManager.switchToDefensiveSetup(gameManager, this, gameManager.getHomeTeam(), scene);
     }
 }

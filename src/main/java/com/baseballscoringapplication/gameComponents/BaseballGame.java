@@ -25,8 +25,6 @@ public class BaseballGame {
      * Leaving this basic constructor here in anticipation of future changes.
      */
     public BaseballGame() {
-        homeTeam = new Team();
-        awayTeam = new Team();
         listOfInnings = new ArrayList<>();
         listOfExistingTeams = new HashMap<>();
         setExistingTeams();
@@ -124,7 +122,7 @@ public class BaseballGame {
      *
      * @param battingOrder a length 9 array containing which players should be in the batting order.
      */
-    public void setHomeBattingOrder(List<String> battingOrder) {
+    public void setHomeBattingOrder(String[] battingOrder) {
         homeTeam.setBattingOrder(battingOrder);
 
     }
@@ -134,7 +132,7 @@ public class BaseballGame {
      *
      * @param battingOrder a length 9 array containing which players should be in the batting order.
      */
-    public void setAwayBattingOrder(List<String> battingOrder) {
+    public void setAwayBattingOrder(String[] battingOrder) {
         awayTeam.setBattingOrder(battingOrder);
     }
 

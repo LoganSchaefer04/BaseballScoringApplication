@@ -5,6 +5,7 @@ import com.baseballscoringapplication.controllers.ScoreGameController;
 import com.baseballscoringapplication.controllers.TeamSetController;
 import com.baseballscoringapplication.gameComponents.Team;
 import com.baseballscoringapplication.managers.GameManager;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,9 +44,6 @@ public class SceneManager {
             * so this is going to work for now. If I had to switch to another scene and then back, this would
             * break the program, but it will work for now.
             */
-            if (fxmlFile.equals("team-set.fxml")) {
-                loader.setController(new TeamSetController(gameManager, this));
-            }
             if (fxmlFile.equals("score-game.fxml")) {
                 loader.setController(new ScoreGameController(gameManager, this));
             }
@@ -61,13 +59,34 @@ public class SceneManager {
         }
     }
 
-    public void switchToDefensiveSetup(GameManager gameManager, TeamSetController teamSetController, Team team) {
+    public void switchToTeamSet(GameManager gameManager) {
+        String path = "/com/baseballscoringapplication/team-set.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        TeamSetController teamSetController = new TeamSetController(gameManager, this);
+        loader.setController(teamSetController);
+
+
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            teamSetController.injectScene(scene);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void switchToDefensiveSetup(GameManager gameManager, TeamSetController teamSetController, Team team,
+                                       Scene teamSetScene) {
 
         try {
             String path = "/com/baseballscoringapplication/defensive-setup.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
-            loader.setController(new DefensiveSetupController(gameManager, this, teamSetController, team));
+            loader.setController(new DefensiveSetupController(gameManager, this, teamSetController, team,
+                    teamSetScene));
+
 
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -78,20 +97,21 @@ public class SceneManager {
 
     }
 
-    public void switchBackToTeamSet(GameManager gameManager, TeamSetController teamSetController) {
+    /**
+     * Switch back to team-set.fxml. Scene has been saved.
+     *
+     * @param teamSetScene the exact same scene to switch back to.
+     */
+    public void switchBackToTeamSet(Scene teamSetScene) {
+        stage.setScene(teamSetScene);
+        stage.show();
 
-        try {
-                String path = "/com/baseballscoringapplication/team-set.fxml";
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        /**
+         * Just realized that I can save the scene as an attribute of SceneManager instead of passing it around as
+         * a parameter into multiple different methods
+         * TODO: Fix this^^^^
+         */
 
-                loader.setController(teamSetController);
-
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }

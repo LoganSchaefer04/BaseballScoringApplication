@@ -1,5 +1,6 @@
 package com.baseballscoringapplication.controllers;
 
+import com.baseballscoringapplication.gameComponents.Player;
 import com.baseballscoringapplication.managers.BasePathManager;
 import com.baseballscoringapplication.managers.GameManager;
 import com.baseballscoringapplication.managers.SceneManager;
@@ -61,9 +62,9 @@ public class ScoreGameController {
     @FXML
     private Polygon bottomInningArrow; // Arrow that tracks if is the bottom of an inning.
     @FXML
-    private Label currentInningLabel;
+    private Label currentInningLabel; // Counts the number of innings played.
     @FXML
-    private Pane defensiveButtonPane;
+    private Pane defensiveButtonPane; // Holds buttons that correspond to players on defense.
     private BasePathManager basePathManager; // Instance of basePathmManager to keep track of basepaths.
 
     private GameManager gameManager; // Used to update game state from inputs
@@ -86,6 +87,12 @@ public class ScoreGameController {
         currentInningLabel.setTextAlignment(TextAlignment.CENTER);
         currentInningLabel.setText("1"); // Initialize first inning
 
+        Player[] players = gameManager.getDefensiveLineup(gameManager.getHomeTeam());
+        Button button;
+        for (int i = 0; i < 8; i++) {
+            button = (Button) defensiveButtonPane.getChildren().get(i);
+            button.setText(players[i].getPlayerName());
+        }
     }
 
     /**
@@ -290,14 +297,43 @@ public class ScoreGameController {
      * Guarantee that the UI correctly displays what the current inning is.
      */
     private void updateInningUI() {
+        // Check if new half inning is top or bottom of inning.
         if (gameManager.isTopInning) {
+            // Inning is top. Arrow points upwards.
             topInningArrow.setVisible(true);
             bottomInningArrow.setVisible(false);
+
+            // Get list of defensive players for home team, call method to update UI.
+            Player[] players = gameManager.getDefensiveLineup(gameManager.getHomeTeam());
+            Button button;
+            updateDefenseUI(players);
+
+        // It is the bottom of the inning
         } else {
+            // Arrow points downwards.
             topInningArrow.setVisible(false);
             bottomInningArrow.setVisible(true);
+
+            // Get list of defensive players for away team, call method to update UI.
+            Player[] players = gameManager.getDefensiveLineup(gameManager.getAwayTeam());
+            updateDefenseUI(players);
         }
 
         currentInningLabel.setText(Integer.toString(gameManager.currentInningNumber));
     }
+
+    /**
+     * Update the defense buttons to correct players.
+     *
+     * @param players List of players on defense
+     */
+    private void updateDefenseUI(Player[] players) {
+            Button button;
+            // Add each player to his correct defensive position.
+            for (int i = 0; i < 8; i++) {
+                button = (Button) defensiveButtonPane.getChildren().get(i);
+                button.setText(players[i].getPlayerName());
+            }
+        }
+
 }

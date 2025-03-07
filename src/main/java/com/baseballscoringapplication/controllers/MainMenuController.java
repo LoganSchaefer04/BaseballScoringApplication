@@ -24,9 +24,11 @@ public class MainMenuController {
     public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
+
     @FXML
     public void showTeamSetScreen() {
-        sceneManager.switchScene("team-set.fxml", gameManager);
+        //sceneManager.switchScene("team-set.fxml", gameManager);
+        sceneManager.switchToTeamSet(gameManager);
 
     }
 

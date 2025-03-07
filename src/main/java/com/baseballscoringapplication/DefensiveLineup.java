@@ -20,4 +20,8 @@ public class DefensiveLineup {
             lineup[i] = rosterMap.get(playersList[i]);
         }
     }
+
+    public Player[] getDefensiveLineup() {
+        return lineup;
+    }
 }

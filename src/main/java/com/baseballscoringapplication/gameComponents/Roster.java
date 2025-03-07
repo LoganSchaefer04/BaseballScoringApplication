@@ -13,28 +13,6 @@ public class Roster {
     private ArrayList<Player> availablePitchers;
     private Map<String, Player> rosterMap;
 
-    /**
-     * Constructor for base team. All players are generic.
-     */
-    public Roster() {
-         // Initialize all data structures for maintaining roster.
-        String[] defensivePositions = {"P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"};
-        roster = new ArrayList<>(DEFAULT_ROSTER_SIZE);
-        availablePitchers = new ArrayList<>(DEFAULT_ROSTER_SIZE);
-        rosterMap = new HashMap<>();
-
-        // Create the unique pitcher allowed for generic teams and add to roster.
-        Player player = new Pitcher("John DoeP", "P");
-        roster.add(player);
-        rosterMap.put("John DoeP", player);
-        availablePitchers.add(player);
-
-        for (int i = 1; i < 10; i++) {
-            Player newPlayer = new Player("John Doe", defensivePositions[i]);
-            roster.add(newPlayer);
-            rosterMap.put("John Doe", newPlayer);
-        }
-    }
 
     /**
      * Constructor for already existing team.

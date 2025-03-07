@@ -5,6 +5,7 @@ import com.baseballscoringapplication.gameComponents.Team;
 import com.baseballscoringapplication.managers.GameManager;
 import com.baseballscoringapplication.managers.SceneManager;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -41,13 +42,15 @@ public class DefensiveSetupController {
     private Button submitChangesButton;
     @FXML
     private Pane defensePane;
+    private Scene scene;
 
     public DefensiveSetupController(GameManager gameManager, SceneManager sceneManager,
-                                    TeamSetController teamSetController, Team team) {
+                                    TeamSetController teamSetController, Team team, Scene scene) {
         this.gameManager = gameManager;
         this.sceneManager = sceneManager;
         this.teamSetController = teamSetController;
         this.team = team;
+        this.scene = scene;
     }
 
     public void initialize() {
@@ -76,8 +79,9 @@ public class DefensiveSetupController {
             Button button = (Button) defensePane.getChildren().get(i);
             buttonTexts[i] = button.getText();
         }
+
         gameManager.setDefense(team, buttonTexts);
-        sceneManager.switchBackToTeamSet(gameManager, teamSetController);
+        sceneManager.switchBackToTeamSet(scene);
     }
 
 }

@@ -33,17 +33,12 @@ public class Team {
         }
     }
 
-    /**
-     * Generic Team, only 9 players, 1 pitcher.
-     */
-    public Team() {
-        teamName = "Generic Team";
-        teamRoster = new Roster();
-        battingOrder = new BattingOrder(teamRoster);
-    }
-
     public void setDefensiveLineup(String[] playersList) {
         defensiveLineup.setLineup(playersList, teamRoster.getRosterMap());
+    }
+
+    public Player[] getDefensiveLineup() {
+        return defensiveLineup.getDefensiveLineup();
     }
 
 
@@ -69,7 +64,7 @@ public class Team {
         return battingOrder.nextBatterUpIndex;
     }
 
-    public void setBattingOrder(List<String> newBattingOrder) {
+    public void setBattingOrder(String[] newBattingOrder) {
         battingOrder.setBattingOrder(newBattingOrder, teamRoster.getRosterMap());
     }
 

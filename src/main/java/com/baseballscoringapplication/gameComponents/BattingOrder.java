@@ -28,9 +28,9 @@ public class BattingOrder {
      * @param newBattingOrder length 9 list containing the names of players that will be in batting order.
      * @param rosterMap - Contains a map of all player names and player objects used to set players in batting order.
      */
-    public void setBattingOrder(List<String> newBattingOrder, Map<String, Player> rosterMap) {
+    public void setBattingOrder(String[] newBattingOrder, Map<String, Player> rosterMap) {
         for (int i = 0; i < 9; i++) {
-            battingOrder.set(i, rosterMap.get(newBattingOrder.get(i)));
+            battingOrder.set(i, rosterMap.get(newBattingOrder[i]));
         }
     }
 

@@ -111,6 +111,7 @@ public class GameManager {
         // Create new plate appearance with next batter in batting order.
         currentPlateAppearance = new PlateAppearance(currentHalfInning.getNextBatter());
 
+
         // Queue index in batting order to return next player in batting order.
         // Add newly created plate appearance to list of plate appearances in inning.
         currentHalfInning.queueNextBatter();
@@ -215,6 +216,10 @@ public class GameManager {
         team.setDefensiveLineup(playersList);
     }
 
+    public Player[] getDefensiveLineup(Team team) {
+        return team.getDefensiveLineup();
+    }
+
     public Map<String, Team> getAllTeams() {
         return currentGame.getExistingTeams();
     }
@@ -234,10 +239,10 @@ public class GameManager {
         return currentGame.getAwayTeam();
     }
 
-    public void setHomeBattingOrder(List<String> battingOrder) {
+    public void setHomeBattingOrder(String[] battingOrder) {
         currentGame.setHomeBattingOrder(battingOrder);
     }
-    public void setAwayBattingOrder(List<String> battingOrder) {
+    public void setAwayBattingOrder(String[] battingOrder) {
         currentGame.setAwayBattingOrder(battingOrder);
     }
 
