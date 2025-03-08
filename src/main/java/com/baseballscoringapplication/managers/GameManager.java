@@ -146,7 +146,6 @@ public class GameManager {
         if (currentPlateAppearance.scoreBall(pitch) == 4) {
             // Score a walk and start a new plate appearance
             scoreWalk();
-            startNewPlateAppearance();
         }
     }
 
@@ -162,8 +161,9 @@ public class GameManager {
     public void scoreStrikeout() {
         // Create play labeled as strikeout
         // Set plate appearance play to newly created play
-        currentPlay = new Play("Strikeout");
+        currentPlay = new Play("Strikeout", currentHalfInning);
         currentPlateAppearance.setPlay(currentPlay);
+        getCurrentBatter().getGameStats().addOutcome(currentPlay);
 
         // Increment outs in inning
         // Increment number of outs recorded by pitcher
@@ -181,11 +181,13 @@ public class GameManager {
      */
     public void scoreWalk() {
         // Create play for walk, and add to current plate appearance.
-        currentPlay = new Play("Walk");
+        currentPlay = new Play("Walk", currentHalfInning);
         currentPlateAppearance.setPlay(currentPlay);
+        currentPlateAppearance.getBatter().getGameStats().addOutcome(currentPlay);
 
         // Update base paths in basePathManager.
         basePathManager.scoreWalk(currentPlateAppearance.getBatter());
+        startNewPlateAppearance();
     }
 
     /**

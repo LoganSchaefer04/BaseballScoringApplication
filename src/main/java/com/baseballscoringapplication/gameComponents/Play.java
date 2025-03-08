@@ -9,14 +9,28 @@ public class Play {
     // Pop-up, ground ball, line drive, fly ball, etc.
     String contactType;
     String contactResult;
+    private boolean isAtBat;
+    private boolean isHit;
     ArrayList<Integer> defensiveSequence;
     int outs = 0;
     ArrayList<Integer> runnersAdvancement;
     ArrayList<Player> runnersScored;
+    Inning inning;
     final String[] defendersList = {"P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF"};
 
-    public Play(String contactType) {
+    public Play(String contactType, Inning inning) {
         this.contactType = contactType;
+        this.inning = inning;
+
+        switch (contactType) {
+            case "Walk":
+                isAtBat = false;
+                break;
+            case "Strikeout":
+                isAtBat = true;
+                isHit = false;
+        }
+
     }
 
     public void scoreRun(Player player) {
@@ -29,7 +43,13 @@ public class Play {
 
 
 
+    public boolean isAtBat() {
+        return isAtBat;
+    }
 
+    public boolean isHit() {
+        return isHit;
+    }
     public int getNumOuts() {
         return 1;
     }

@@ -1,5 +1,6 @@
 package com.baseballscoringapplication.controllers;
 
+import com.baseballscoringapplication.GameStats;
 import com.baseballscoringapplication.gameComponents.Player;
 import com.baseballscoringapplication.managers.BasePathManager;
 import com.baseballscoringapplication.managers.GameManager;
@@ -121,9 +122,11 @@ public class ScoreGameController {
         updateOutsUI();
         updateBasePathUI();
         updateDefenseUI();
-        updatePitcherLabel();
-        updateInningUI();
-        updateBatterLabel();
+        if (gameManager.getStrikeCount() == 0) {
+            updatePitcherLabel();
+            updateInningUI();
+            updateBatterLabel();
+        }
     }
 
     /**
@@ -266,6 +269,7 @@ public class ScoreGameController {
     /**
      * Guarantee the defense is accurately represented in UI.
      */
+    @FXML
     private void updateDefenseUI() {
         // Currently incomplete, currently only handles pitcher
         pitcherButton.setText(gameManager.getCurrentPitcher().getPlayerName());
@@ -274,14 +278,21 @@ public class ScoreGameController {
     /**
      * Guarantee the correct batter is shown in UI.
      */
+    @FXML
     private void updateBatterLabel() {
         // Show current name and spot in the batting order.
         batterLabel.setText(gameManager.getCurrentBatterSpot() + ". " + gameManager.getCurrentBatter().getPlayerName());
+
+        GameStats batterStats = gameManager.getCurrentBatter().getGameStats();
+        currentBatterStatsLabel.setText(gameManager.getCurrentBatter().getGameStats().getNumberOfHits() + "-" +
+                batterStats.getNumberOfAtBats());
+
     }
 
     /**
      * Guarantee the correct pitcher is shown in the UI.
      */
+    @FXML
     private void updatePitcherLabel() {
         // Currently incomplete
         // Update pitcher label with current pitcher.
@@ -296,6 +307,7 @@ public class ScoreGameController {
     /**
      * Guarantee that the UI correctly displays what the current inning is.
      */
+    @FXML
     private void updateInningUI() {
         // Check if new half inning is top or bottom of inning.
         if (gameManager.isTopInning) {

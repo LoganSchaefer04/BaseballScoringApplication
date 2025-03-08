@@ -1,9 +1,12 @@
 package com.baseballscoringapplication.gameComponents;
 
+import com.baseballscoringapplication.GameStats;
+
 public class Player {
 
     String playerName;
     String position;
+    GameStats gameStats;
 
     /**
      * Create new player. Set name and position.
@@ -14,6 +17,7 @@ public class Player {
     public Player(String name, String playerPosition) {
         playerName = name;
         position = playerPosition;
+        gameStats = new GameStats();
     }
     public Player (String name) {
         playerName = name;
@@ -46,6 +50,14 @@ public class Player {
     public String getPlayerName() {
         return playerName;
     }
+
+    public GameStats getGameStats() {
+        return gameStats;
+    }
+
+
+
+
 }
 
 
