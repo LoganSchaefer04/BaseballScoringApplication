@@ -1,4 +1,7 @@
-package com.baseballscoringapplication.gameComponents;
+package com.baseballscoringapplication.gameComponents.Play;
+
+import com.baseballscoringapplication.gameComponents.Inning;
+import com.baseballscoringapplication.gameComponents.Player;
 
 import java.util.ArrayList;
 import java.util.Scanner;

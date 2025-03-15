@@ -1,5 +1,7 @@
 package com.baseballscoringapplication.gameComponents;
 
+import com.baseballscoringapplication.gameComponents.Play.Play;
+
 import java.util.ArrayList;
 
 // 54 atBat instances will be created throughout a game, saving information for viewing and querying.

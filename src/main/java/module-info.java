@@ -15,5 +15,7 @@ module com.example.baseballscoringapplication {
 
     opens com.baseballscoringapplication.managers to javafx.fxml;
     exports com.baseballscoringapplication.managers;
+    exports com.baseballscoringapplication.gameComponents.Play;
+    opens com.baseballscoringapplication.gameComponents.Play to javafx.fxml;
 
 }

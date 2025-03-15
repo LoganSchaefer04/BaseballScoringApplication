@@ -1,9 +1,8 @@
 package com.baseballscoringapplication.managers;
 
 import com.baseballscoringapplication.gameComponents.*;
-import javafx.scene.layout.Pane;
+import com.baseballscoringapplication.gameComponents.Play.Play;
 
-import java.util.List;
 import java.util.Map;
 
 public class GameManager {
@@ -277,8 +276,8 @@ public class GameManager {
     public Player getCurrentBatter() {
         return currentPlateAppearance.getBatter();
     }
-    public String getCurrentBatterSpot() {
-        return Integer.toString(currentHalfInning.getCurrentBatterIndex());
+    public int getCurrentBatterSpot() {
+        return currentHalfInning.getCurrentBatterSpot();
     }
 }
 

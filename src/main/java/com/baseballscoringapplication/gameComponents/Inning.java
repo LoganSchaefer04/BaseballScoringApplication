@@ -51,7 +51,7 @@ public class Inning {
         numberOfOuts = outs;
     }
 
-    public int getCurrentBatterIndex() {
+    public int getCurrentBatterSpot() {
         return battingTeam.getCurrentBatterIndex();
     }
 

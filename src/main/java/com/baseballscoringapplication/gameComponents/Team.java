@@ -61,7 +61,7 @@ public class Team {
     }
 
     public int getCurrentBatterIndex() {
-        return battingOrder.nextBatterUpIndex;
+        return battingOrder.getNextBatterUpSpot();
     }
 
     public void setBattingOrder(String[] newBattingOrder) {

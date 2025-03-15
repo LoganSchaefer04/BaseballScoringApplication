@@ -281,7 +281,7 @@ public class ScoreGameController {
     @FXML
     private void updateBatterLabel() {
         // Show current name and spot in the batting order.
-        batterLabel.setText(gameManager.getCurrentBatterSpot() + ". " + gameManager.getCurrentBatter().getPlayerName());
+        batterLabel.setText((gameManager.getCurrentBatterSpot()) + ". " + gameManager.getCurrentBatter().getPlayerName());
 
         GameStats batterStats = gameManager.getCurrentBatter().getGameStats();
         currentBatterStatsLabel.setText(gameManager.getCurrentBatter().getGameStats().getNumberOfHits() + "-" +

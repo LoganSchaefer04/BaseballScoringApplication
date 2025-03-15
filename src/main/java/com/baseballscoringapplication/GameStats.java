@@ -1,6 +1,6 @@
 package com.baseballscoringapplication;
 
-import com.baseballscoringapplication.gameComponents.Play;
+import com.baseballscoringapplication.gameComponents.Play.Play;
 
 import java.util.ArrayList;
 

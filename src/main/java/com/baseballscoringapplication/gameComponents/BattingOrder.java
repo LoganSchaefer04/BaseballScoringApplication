@@ -62,4 +62,12 @@ public class BattingOrder {
     public void queueNextBatter() {
         nextBatterUpIndex = (nextBatterUpIndex + 1) % 9;
     }
+
+    public int getNextBatterUpSpot() {
+        if (nextBatterUpIndex == 0) {
+            return 1;
+        } else {
+            return nextBatterUpIndex + 1;
+        }
+    }
 }
